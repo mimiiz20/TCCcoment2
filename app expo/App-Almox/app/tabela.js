@@ -51,6 +51,7 @@ export default function Tabela() {
             estoque_min: item.estoque_min,
             preco: item.preco,
             descricao: item.descricao,
+            imagem: item.imagem,
           }));
 
           setProdutos(produtosFormatados);
@@ -107,33 +108,39 @@ const excluirItem = (id) => {
   return (
     <View style={styles.background}>
 
-      <Modal
-        visible={imagemAberta}
-        transparent={true}
-        animationType="fade"
-        onRequestClose={() => setImagemAberta(false)}
-      >
-        <View style={styles.fundoPopup}>
-          <View style={styles.popup}>
-            <TouchableOpacity
-              style={styles.fecharPopup}
-              onPress={() => setImagemAberta(false)}
-            >
-              <MaterialIcons
-                name="close"
-                size={25}
-                color="#FFFFFF"
-              />
-            </TouchableOpacity>
+<Modal
+  visible={imagemAberta !== null}
+  transparent={true}
+  animationType="fade"
+  onRequestClose={() => setImagemAberta(null)}
+>
+  <View style={styles.fundoPopup}>
+    <View style={styles.popup}>
 
-            <Image
-              source={require('../assets/industria.png')}
-              style={styles.imagemPopup}
-              resizeMode="contain"
-            />
-          </View>
-        </View>
-      </Modal>
+      <TouchableOpacity
+        style={styles.fecharPopup}
+        onPress={() => setImagemAberta(null)}
+      >
+        <MaterialIcons
+          name="close"
+          size={25}
+          color="#FFFFFF"
+        />
+      </TouchableOpacity>
+
+      {imagemAberta && (
+        <Image
+          source={{
+            uri: `http://10.154.20.25:5000/${imagemAberta}`
+          }}
+          style={styles.imagemPopup}
+          resizeMode="contain"
+        />
+      )}
+
+    </View>
+  </View>
+</Modal>
 
       {/* NAVBAR */}
       <View style={styles.navbar}>
@@ -280,15 +287,20 @@ const excluirItem = (id) => {
                   </Text>
 
                   <Text style={styles.detalhe}>
+                    <Text style={styles.negrito}>QUANT MÍN:</Text> {item.estoque_min}
+                  </Text>
+
+                  <Text style={styles.detalhe}>
                     <Text style={styles.negrito}>PREÇO:</Text> {item.preco}
                   </Text>
 
                   <Text style={styles.detalhe}>
                     <Text style={styles.negrito}>DESCRIÇÃO:</Text> {item.descricao}
                   </Text>
+
                   <TouchableOpacity
                     style={styles.botaoImagem}
-                    onPress={() => setImagemAberta(true)}
+                    onPress={() => setImagemAberta(item.imagem)}
                   >
                     <MaterialIcons
                       name="image"
@@ -457,6 +469,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
+  },
+  botaoImagem: {
+    width: 40,
+    height: 40,
+    backgroundColor: '#1D3273',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginTop: 10,
   },
   detalhes: {
     padding: 12,

@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Modal } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import { Montserrat_400Regular } from '@expo-google-fonts/montserrat';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useEffect } from 'react';
 import { router, usePathname } from 'expo-router';
@@ -77,46 +77,13 @@ export default function Usuarios() {
   }, []);
 
 
+  if (!fontsLoaded) {
+    return null;
+  }
+
+
   return (
     <View style={styles.background}>
-
-      {/* POPUP DA IMAGEM */}
-      <Modal
-        visible={imagemAberta}
-        transparent={true}
-        animationType="fade"
-        onRequestClose={() => setImagemAberta(false)}
-      >
-
-        <View style={styles.fundoPopup}>
-
-          <View style={styles.popup}>
-
-            <TouchableOpacity
-              style={styles.fecharPopup}
-              onPress={() => setImagemAberta(false)}
-            >
-
-              <MaterialIcons
-                name="close"
-                size={25}
-                color="#FFFFFF"
-              />
-
-            </TouchableOpacity>
-
-            <Image
-              source={require('../assets/industria.png')}
-              style={styles.imagemPopup}
-              resizeMode="contain"
-            />
-
-          </View>
-
-        </View>
-
-      </Modal>
-
 
       {/* NAVBAR */}
 
@@ -380,22 +347,6 @@ export default function Usuarios() {
 
                   </Text>
 
-
-                  <TouchableOpacity
-                    style={styles.botaoImagem}
-                    onPress={() =>
-                      setImagemAberta(true)
-                    }
-                  >
-
-                    <MaterialIcons
-                      name="image"
-                      size={18}
-                      color="#FFFFFF"
-                    />
-
-                  </TouchableOpacity>
-
                 </View>
 
               )}
@@ -606,54 +557,6 @@ const styles = StyleSheet.create({
 
   negrito: {
     fontWeight: 'bold',
-  },
-
-
-  fundoPopup: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-
-  popup: {
-    width: '80%',
-    height: '60%',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-
-  fecharPopup: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    zIndex: 10,
-    backgroundColor: '#1D3273',
-    borderRadius: 15,
-    padding: 5,
-  },
-
-
-  imagemPopup: {
-    width: '100%',
-    height: '80%',
-  },
-
-
-  botaoImagem: {
-    width: 100,
-    height: 30,
-    backgroundColor: '#1D3273',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 8,
-    alignSelf: 'center',
   },
 
 });

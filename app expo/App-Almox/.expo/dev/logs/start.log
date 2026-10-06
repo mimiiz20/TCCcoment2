@@ -5217,3 +5217,266 @@
 {"_e":"metro:client_log","_t":1791199183784,"level":"log","data":["STATUS:","200"]}
 {"_e":"metro:client_log","_t":1791199183784,"level":"log","data":["USUÁRIOS:","{\"success\": true, \"usuarios\": [{\"email\": \"admin@empresa.com\", \"id\": 1, \"nome\": \"Administrador\", \"tipo\": \"admin\"}, {\"email\": \"joao@empresa.com\", \"id\": 2, \"nome\": \"JoÃ£o\", \"tipo\": \"usuario\"}, {\"email\": \"mica@gmail.com\", \"id\": 3, \"nome\": \"Mica\", \"tipo\": \"usuario\"}, {\"email\": \"socorro@gmail\", \"id\": 4, \"nome\": \"Socorro\", \"tipo\": \"usuario\"}]}"]}
 {"_e":"metro:client_log","_t":1791199280234,"level":"error","data":["[ReferenceError: Property 'imagemAberta' doesn't exist]","\n\n\u001b[1mCode: contas.js\u001b[22m\n\u001b[0m \u001b[90m 83 |\u001b[39m       {\u001b[90m/* POPUP DA IMAGEM */\u001b[39m}\n \u001b[90m 84 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mModal\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 85 |\u001b[39m         visible\u001b[33m=\u001b[39m{imagemAberta}\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 86 |\u001b[39m         transparent\u001b[33m=\u001b[39m{\u001b[36mtrue\u001b[39m}\n \u001b[90m 87 |\u001b[39m         animationType\u001b[33m=\u001b[39m\u001b[32m\"fade\"\u001b[39m\n \u001b[90m 88 |\u001b[39m         onRequestClose\u001b[33m=\u001b[39m{() \u001b[33m=>\u001b[39m setImagemAberta(\u001b[36mfalse\u001b[39m)}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Usuarios (app\\contas.js:85:18)\u001b[39m","\n\n\u001b[1mCode: _layout.js\u001b[22m\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[36mfunction\u001b[39m \u001b[33mLayout\u001b[39m() {\n \u001b[90m 4 |\u001b[39m   \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mStack\u001b[39m\n \u001b[90m   |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m       screenOptions\u001b[33m=\u001b[39m{{\n \u001b[90m 7 |\u001b[39m         headerShown\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 8 |\u001b[39m       }}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Layout (app\\_layout.js:5:5)\u001b[39m"]}
+{"_e":"root:init","_t":1791282384972,"format":"v0-jsonl","version":"57.0.27"}
+{"_e":"env:mode","_t":1791282384975,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1791282384984,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1791282386445,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1791282392715,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1791282395106,"plugins":[]}
+{"_e":"metro:instantiate","_t":1791282409445,"atlas":false,"workers":3,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1791282588165,"id":"4","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1791282588167,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1791282588174,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1791282605952,"id":"4","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1791282606058,"id":"4","progress":0.04000000000000001,"total":2,"current":2}
+{"_e":"metro:bundling:progress","_t":1791282606163,"id":"4","progress":0.16000000000000003,"total":10,"current":4}
+{"_e":"metro:bundling:progress","_t":1791282606282,"id":"4","progress":0.16000000000000003,"total":18,"current":6}
+{"_e":"metro:bundling:progress","_t":1791282606430,"id":"4","progress":0.16000000000000003,"total":29,"current":11}
+{"_e":"metro:bundling:progress","_t":1791282606575,"id":"4","progress":0.19140625,"total":32,"current":14}
+{"_e":"metro:bundling:progress","_t":1791282606680,"id":"4","progress":0.19463667820069203,"total":34,"current":15}
+{"_e":"metro:bundling:progress","_t":1791282606851,"id":"4","progress":0.22145328719723184,"total":34,"current":16}
+{"_e":"metro:bundling:progress","_t":1791282606951,"id":"4","progress":0.22145328719723184,"total":133,"current":16}
+{"_e":"metro:bundling:progress","_t":1791282607088,"id":"4","progress":0.22145328719723184,"total":136,"current":18}
+{"_e":"metro:bundling:progress","_t":1791282607190,"id":"4","progress":0.22145328719723184,"total":168,"current":23}
+{"_e":"metro:bundling:progress","_t":1791282607361,"id":"4","progress":0.22145328719723184,"total":169,"current":24}
+{"_e":"metro:bundling:progress","_t":1791282607463,"id":"4","progress":0.22145328719723184,"total":176,"current":28}
+{"_e":"metro:bundling:progress","_t":1791282607576,"id":"4","progress":0.22145328719723184,"total":185,"current":32}
+{"_e":"metro:bundling:progress","_t":1791282607679,"id":"4","progress":0.22145328719723184,"total":193,"current":34}
+{"_e":"metro:bundling:progress","_t":1791282608272,"id":"4","progress":0.22145328719723184,"total":193,"current":35}
+{"_e":"metro:bundling:progress","_t":1791282608381,"id":"4","progress":0.22145328719723184,"total":194,"current":39}
+{"_e":"metro:bundling:progress","_t":1791282608501,"id":"4","progress":0.22145328719723184,"total":206,"current":44}
+{"_e":"metro:bundling:progress","_t":1791282608607,"id":"4","progress":0.22145328719723184,"total":220,"current":52}
+{"_e":"metro:bundling:progress","_t":1791282608723,"id":"4","progress":0.22145328719723184,"total":227,"current":57}
+{"_e":"metro:bundling:progress","_t":1791282608854,"id":"4","progress":0.22145328719723184,"total":231,"current":59}
+{"_e":"metro:bundling:progress","_t":1791282608955,"id":"4","progress":0.22145328719723184,"total":244,"current":64}
+{"_e":"metro:bundling:progress","_t":1791282609067,"id":"4","progress":0.22145328719723184,"total":251,"current":75}
+{"_e":"metro:bundling:progress","_t":1791282609167,"id":"4","progress":0.22145328719723184,"total":267,"current":86}
+{"_e":"metro:bundling:progress","_t":1791282609269,"id":"4","progress":0.22145328719723184,"total":279,"current":103}
+{"_e":"metro:bundling:progress","_t":1791282609374,"id":"4","progress":0.22145328719723184,"total":293,"current":111}
+{"_e":"metro:bundling:progress","_t":1791282609475,"id":"4","progress":0.22145328719723184,"total":302,"current":129}
+{"_e":"metro:bundling:progress","_t":1791282609576,"id":"4","progress":0.22145328719723184,"total":305,"current":134}
+{"_e":"metro:bundling:progress","_t":1791282609679,"id":"4","progress":0.22145328719723184,"total":318,"current":146}
+{"_e":"metro:bundling:progress","_t":1791282609780,"id":"4","progress":0.24236686390532547,"total":325,"current":160}
+{"_e":"metro:bundling:progress","_t":1791282609882,"id":"4","progress":0.2640378698224852,"total":325,"current":167}
+{"_e":"metro:bundling:progress","_t":1791282609982,"id":"4","progress":0.28444444444444444,"total":330,"current":176}
+{"_e":"metro:bundling:progress","_t":1791282610082,"id":"4","progress":0.3064413265306123,"total":336,"current":186}
+{"_e":"metro:bundling:progress","_t":1791282610182,"id":"4","progress":0.3064413265306123,"total":359,"current":196}
+{"_e":"metro:bundling:progress","_t":1791282610294,"id":"4","progress":0.3064413265306123,"total":359,"current":198}
+{"_e":"metro:bundling:progress","_t":1791282610394,"id":"4","progress":0.31933456618657013,"total":361,"current":204}
+{"_e":"metro:bundling:progress","_t":1791282610494,"id":"4","progress":0.31933456618657013,"total":367,"current":206}
+{"_e":"metro:bundling:progress","_t":1791282611158,"id":"4","progress":0.31933456618657013,"total":367,"current":207}
+{"_e":"metro:bundling:progress","_t":1791282611260,"id":"4","progress":0.3256439035916824,"total":368,"current":210}
+{"_e":"metro:bundling:progress","_t":1791282611365,"id":"4","progress":0.3256439035916824,"total":375,"current":212}
+{"_e":"metro:bundling:progress","_t":1791282611397,"id":"4","progress":0.3256439035916824,"total":375,"current":213}
+{"_e":"metro:bundling:progress","_t":1791282611500,"id":"4","progress":0.3256439035916824,"total":382,"current":214}
+{"_e":"metro:bundling:progress","_t":1791282611686,"id":"4","progress":0.3256439035916824,"total":382,"current":215}
+{"_e":"metro:bundling:progress","_t":1791282611820,"id":"4","progress":0.3256439035916824,"total":390,"current":222}
+{"_e":"metro:bundling:progress","_t":1791282611930,"id":"4","progress":0.3302611760935747,"total":395,"current":227}
+{"_e":"metro:bundling:progress","_t":1791282612043,"id":"4","progress":0.3385656910455621,"total":397,"current":231}
+{"_e":"metro:bundling:progress","_t":1791282612145,"id":"4","progress":0.3385656910455621,"total":422,"current":243}
+{"_e":"metro:bundling:progress","_t":1791282612248,"id":"4","progress":0.34050657439446363,"total":425,"current":248}
+{"_e":"metro:bundling:progress","_t":1791282612351,"id":"4","progress":0.3555070642950031,"total":426,"current":254}
+{"_e":"metro:bundling:progress","_t":1791282612458,"id":"4","progress":0.3555070642950031,"total":457,"current":271}
+{"_e":"metro:bundling:progress","_t":1791282612564,"id":"4","progress":0.3699377822754446,"total":462,"current":281}
+{"_e":"metro:bundling:progress","_t":1791282612686,"id":"4","progress":0.3699377822754446,"total":475,"current":288}
+{"_e":"metro:bundling:progress","_t":1791282612791,"id":"4","progress":0.37345679012345684,"total":486,"current":297}
+{"_e":"metro:bundling:progress","_t":1791282612915,"id":"4","progress":0.3909432929181479,"total":491,"current":307}
+{"_e":"metro:bundling:progress","_t":1791282613015,"id":"4","progress":0.3909432929181479,"total":519,"current":324}
+{"_e":"metro:bundling:progress","_t":1791282613118,"id":"4","progress":0.3909432929181479,"total":556,"current":345}
+{"_e":"metro:bundling:progress","_t":1791282613220,"id":"4","progress":0.3909432929181479,"total":585,"current":356}
+{"_e":"metro:bundling:progress","_t":1791282613324,"id":"4","progress":0.3909432929181479,"total":601,"current":364}
+{"_e":"metro:bundling:progress","_t":1791282613437,"id":"4","progress":0.3909432929181479,"total":602,"current":366}
+{"_e":"metro:bundling:progress","_t":1791282613598,"id":"4","progress":0.3909432929181479,"total":602,"current":367}
+{"_e":"metro:bundling:progress","_t":1791282613705,"id":"4","progress":0.3909432929181479,"total":602,"current":368}
+{"_e":"metro:bundling:progress","_t":1791282613812,"id":"4","progress":0.3909432929181479,"total":603,"current":369}
+{"_e":"metro:bundling:progress","_t":1791282614148,"id":"4","progress":0.3909432929181479,"total":603,"current":370}
+{"_e":"metro:bundling:progress","_t":1791282614255,"id":"4","progress":0.3909432929181479,"total":605,"current":374}
+{"_e":"metro:bundling:progress","_t":1791282614385,"id":"4","progress":0.3909432929181479,"total":611,"current":378}
+{"_e":"metro:bundling:progress","_t":1791282614527,"id":"4","progress":0.3909432929181479,"total":619,"current":379}
+{"_e":"metro:bundling:progress","_t":1791282614629,"id":"4","progress":0.3909432929181479,"total":622,"current":384}
+{"_e":"metro:bundling:progress","_t":1791282614682,"id":"4","progress":0.3909432929181479,"total":622,"current":385}
+{"_e":"metro:bundling:progress","_t":1791282614790,"id":"4","progress":0.3909432929181479,"total":628,"current":387}
+{"_e":"metro:bundling:progress","_t":1791282614838,"id":"4","progress":0.3909432929181479,"total":628,"current":388}
+{"_e":"metro:bundling:progress","_t":1791282614946,"id":"4","progress":0.3909432929181479,"total":634,"current":396}
+{"_e":"metro:bundling:progress","_t":1791282615046,"id":"4","progress":0.40767925235292823,"total":639,"current":408}
+{"_e":"metro:bundling:progress","_t":1791282615153,"id":"4","progress":0.43412088391999304,"total":642,"current":423}
+{"_e":"metro:bundling:progress","_t":1791282615253,"id":"4","progress":0.4382357508176357,"total":642,"current":425}
+{"_e":"metro:bundling:progress","_t":1791282615300,"id":"4","progress":0.44030046292252595,"total":642,"current":426}
+{"_e":"metro:bundling:progress","_t":1791282615403,"id":"4","progress":0.4472006824564598,"total":646,"current":432}
+{"_e":"metro:bundling:progress","_t":1791282615512,"id":"4","progress":0.477662748178698,"total":654,"current":452}
+{"_e":"metro:bundling:progress","_t":1791282615616,"id":"4","progress":0.49662804732548904,"total":657,"current":463}
+{"_e":"metro:bundling:progress","_t":1791282615727,"id":"4","progress":0.5058711578791771,"total":658,"current":468}
+{"_e":"metro:bundling:progress","_t":1791282615830,"id":"4","progress":0.5283238271994399,"total":659,"current":479}
+{"_e":"metro:bundling:progress","_t":1791282615959,"id":"4","progress":0.5367443707158569,"total":662,"current":485}
+{"_e":"metro:bundling:progress","_t":1791282616059,"id":"4","progress":0.5591266942618295,"total":666,"current":498}
+{"_e":"metro:bundling:progress","_t":1791282616159,"id":"4","progress":0.5731685919318765,"total":671,"current":508}
+{"_e":"metro:bundling:progress","_t":1791282616259,"id":"4","progress":0.595037025434864,"total":678,"current":523}
+{"_e":"metro:bundling:progress","_t":1791282616370,"id":"4","progress":0.6011867254778408,"total":690,"current":535}
+{"_e":"metro:bundling:progress","_t":1791282616470,"id":"4","progress":0.6011867254778408,"total":721,"current":552}
+{"_e":"metro:bundling:progress","_t":1791282616574,"id":"4","progress":0.6011867254778408,"total":749,"current":564}
+{"_e":"metro:bundling:progress","_t":1791282616685,"id":"4","progress":0.6011867254778408,"total":751,"current":575}
+{"_e":"metro:bundling:progress","_t":1791282616784,"id":"4","progress":0.6011867254778408,"total":756,"current":584}
+{"_e":"metro:bundling:progress","_t":1791282616887,"id":"4","progress":0.6011867254778408,"total":796,"current":587}
+{"_e":"metro:bundling:progress","_t":1791282617323,"id":"4","progress":0.6011867254778408,"total":796,"current":588}
+{"_e":"metro:bundling:progress","_t":1791282617430,"id":"4","progress":0.6011867254778408,"total":804,"current":602}
+{"_e":"metro:bundling:progress","_t":1791282617530,"id":"4","progress":0.6011867254778408,"total":830,"current":611}
+{"_e":"metro:bundling:progress","_t":1791282617630,"id":"4","progress":0.6011867254778408,"total":936,"current":622}
+{"_e":"metro:bundling:progress","_t":1791282617733,"id":"4","progress":0.6011867254778408,"total":948,"current":638}
+{"_e":"metro:bundling:progress","_t":1791282617837,"id":"4","progress":0.6011867254778408,"total":958,"current":653}
+{"_e":"metro:bundling:progress","_t":1791282617938,"id":"4","progress":0.6011867254778408,"total":965,"current":662}
+{"_e":"metro:bundling:progress","_t":1791282618041,"id":"4","progress":0.6011867254778408,"total":965,"current":663}
+{"_e":"metro:bundling:progress","_t":1791282618141,"id":"4","progress":0.6011867254778408,"total":965,"current":664}
+{"_e":"metro:bundling:progress","_t":1791282618245,"id":"4","progress":0.6011867254778408,"total":969,"current":672}
+{"_e":"metro:bundling:progress","_t":1791282618525,"id":"4","progress":0.6011867254778408,"total":971,"current":680}
+{"_e":"metro:bundling:progress","_t":1791282618716,"id":"4","progress":0.6011867254778408,"total":972,"current":680}
+{"_e":"metro:bundling:progress","_t":1791282618818,"id":"4","progress":0.6011867254778408,"total":981,"current":686}
+{"_e":"metro:bundling:progress","_t":1791282618921,"id":"4","progress":0.6011867254778408,"total":982,"current":692}
+{"_e":"metro:bundling:progress","_t":1791282619022,"id":"4","progress":0.6011867254778408,"total":982,"current":697}
+{"_e":"metro:bundling:progress","_t":1791282619134,"id":"4","progress":0.6011867254778408,"total":988,"current":705}
+{"_e":"metro:bundling:progress","_t":1791282619271,"id":"4","progress":0.6011867254778408,"total":991,"current":713}
+{"_e":"metro:bundling:progress","_t":1791282619373,"id":"4","progress":0.6011867254778408,"total":995,"current":717}
+{"_e":"metro:bundling:progress","_t":1791282619472,"id":"4","progress":0.6011867254778408,"total":995,"current":720}
+{"_e":"metro:bundling:progress","_t":1791282619572,"id":"4","progress":0.6011867254778408,"total":1001,"current":727}
+{"_e":"metro:bundling:progress","_t":1791282619686,"id":"4","progress":0.6011867254778408,"total":1002,"current":729}
+{"_e":"metro:bundling:progress","_t":1791282619796,"id":"4","progress":0.6011867254778408,"total":1011,"current":734}
+{"_e":"metro:bundling:progress","_t":1791282619898,"id":"4","progress":0.6011867254778408,"total":1020,"current":738}
+{"_e":"metro:bundling:progress","_t":1791282620006,"id":"4","progress":0.6011867254778408,"total":1021,"current":739}
+{"_e":"metro:bundling:progress","_t":1791282620037,"id":"4","progress":0.6011867254778408,"total":1021,"current":740}
+{"_e":"metro:bundling:progress","_t":1791282620143,"id":"4","progress":0.6011867254778408,"total":1041,"current":750}
+{"_e":"metro:bundling:progress","_t":1791282620250,"id":"4","progress":0.6011867254778408,"total":1044,"current":754}
+{"_e":"metro:bundling:progress","_t":1791282620351,"id":"4","progress":0.6011867254778408,"total":1045,"current":757}
+{"_e":"metro:bundling:progress","_t":1791282620514,"id":"4","progress":0.6011867254778408,"total":1058,"current":760}
+{"_e":"metro:bundling:progress","_t":1791282620651,"id":"4","progress":0.6011867254778408,"total":1060,"current":763}
+{"_e":"metro:bundling:progress","_t":1791282620979,"id":"4","progress":0.6011867254778408,"total":1061,"current":763}
+{"_e":"metro:bundling:progress","_t":1791282621083,"id":"4","progress":0.6011867254778408,"total":1064,"current":767}
+{"_e":"metro:bundling:progress","_t":1791282621188,"id":"4","progress":0.6011867254778408,"total":1064,"current":769}
+{"_e":"metro:bundling:progress","_t":1791282621231,"id":"4","progress":0.6011867254778408,"total":1064,"current":770}
+{"_e":"metro:bundling:progress","_t":1791282621338,"id":"4","progress":0.6011867254778408,"total":1064,"current":771}
+{"_e":"metro:bundling:progress","_t":1791282621412,"id":"4","progress":0.6011867254778408,"total":1064,"current":772}
+{"_e":"metro:bundling:progress","_t":1791282622256,"id":"4","progress":0.6011867254778408,"total":1065,"current":772}
+{"_e":"metro:bundling:progress","_t":1791282622378,"id":"4","progress":0.6011867254778408,"total":1066,"current":774}
+{"_e":"metro:bundling:progress","_t":1791282622484,"id":"4","progress":0.6011867254778408,"total":1066,"current":778}
+{"_e":"metro:bundling:progress","_t":1791282622584,"id":"4","progress":0.6011867254778408,"total":1067,"current":782}
+{"_e":"metro:bundling:progress","_t":1791282622685,"id":"4","progress":0.6011867254778408,"total":1095,"current":790}
+{"_e":"metro:bundling:progress","_t":1791282622813,"id":"4","progress":0.6011867254778408,"total":1103,"current":795}
+{"_e":"metro:bundling:progress","_t":1791282622920,"id":"4","progress":0.6011867254778408,"total":1111,"current":799}
+{"_e":"metro:bundling:progress","_t":1791282623020,"id":"4","progress":0.6011867254778408,"total":1115,"current":804}
+{"_e":"metro:bundling:progress","_t":1791282623122,"id":"4","progress":0.6011867254778408,"total":1130,"current":808}
+{"_e":"metro:bundling:progress","_t":1791282623244,"id":"4","progress":0.6011867254778408,"total":1130,"current":809}
+{"_e":"metro:bundling:progress","_t":1791282623366,"id":"4","progress":0.6011867254778408,"total":1130,"current":814}
+{"_e":"metro:bundling:progress","_t":1791282623497,"id":"4","progress":0.6011867254778408,"total":1130,"current":815}
+{"_e":"metro:bundling:progress","_t":1791282623524,"id":"4","progress":0.6011867254778408,"total":1130,"current":816}
+{"_e":"metro:bundling:progress","_t":1791282623628,"id":"4","progress":0.6011867254778408,"total":1130,"current":829}
+{"_e":"metro:bundling:progress","_t":1791282623740,"id":"4","progress":0.6011867254778408,"total":1131,"current":834}
+{"_e":"metro:bundling:progress","_t":1791282623840,"id":"4","progress":0.6011867254778408,"total":1155,"current":858}
+{"_e":"metro:bundling:progress","_t":1791282623942,"id":"4","progress":0.6011867254778408,"total":1178,"current":872}
+{"_e":"metro:bundling:progress","_t":1791282624052,"id":"4","progress":0.6011867254778408,"total":1192,"current":884}
+{"_e":"metro:bundling:progress","_t":1791282624159,"id":"4","progress":0.6011867254778408,"total":1219,"current":897}
+{"_e":"metro:bundling:progress","_t":1791282624260,"id":"4","progress":0.6011867254778408,"total":1234,"current":914}
+{"_e":"metro:bundling:progress","_t":1791282624361,"id":"4","progress":0.6011867254778408,"total":1236,"current":923}
+{"_e":"metro:bundling:progress","_t":1791282624461,"id":"4","progress":0.6011867254778408,"total":1245,"current":940}
+{"_e":"metro:bundling:progress","_t":1791282624576,"id":"4","progress":0.6011867254778408,"total":1255,"current":949}
+{"_e":"metro:bundling:progress","_t":1791282624677,"id":"4","progress":0.6011867254778408,"total":1255,"current":950}
+{"_e":"metro:bundling:progress","_t":1791282624688,"id":"4","progress":0.6011867254778408,"total":1255,"current":951}
+{"_e":"metro:bundling:progress","_t":1791282624789,"id":"4","progress":0.6011867254778408,"total":1263,"current":969}
+{"_e":"metro:bundling:progress","_t":1791282624903,"id":"4","progress":0.6018146128518467,"total":1271,"current":986}
+{"_e":"metro:bundling:progress","_t":1791282625007,"id":"4","progress":0.6115728759765624,"total":1280,"current":1001}
+{"_e":"metro:bundling:progress","_t":1791282625113,"id":"4","progress":0.6204175480099771,"total":1281,"current":1009}
+{"_e":"metro:bundling:progress","_t":1791282625213,"id":"4","progress":0.6372615027028076,"total":1284,"current":1025}
+{"_e":"metro:bundling:progress","_t":1791282625313,"id":"4","progress":0.6565283747209449,"total":1286,"current":1042}
+{"_e":"metro:bundling:progress","_t":1791282625422,"id":"4","progress":0.6768452699123714,"total":1286,"current":1058}
+{"_e":"metro:bundling:progress","_t":1791282625524,"id":"4","progress":0.6897225363992754,"total":1292,"current":1073}
+{"_e":"metro:bundling:progress","_t":1791282625624,"id":"4","progress":0.7045625437903431,"total":1295,"current":1087}
+{"_e":"metro:bundling:progress","_t":1791282625725,"id":"4","progress":0.7174780116518896,"total":1301,"current":1102}
+{"_e":"metro:bundling:progress","_t":1791282625827,"id":"4","progress":0.7234773417888756,"total":1305,"current":1110}
+{"_e":"metro:bundling:progress","_t":1791282625938,"id":"4","progress":0.7319030201390796,"total":1315,"current":1125}
+{"_e":"metro:bundling:progress","_t":1791282626039,"id":"4","progress":0.7324776076895694,"total":1325,"current":1134}
+{"_e":"metro:bundling:progress","_t":1791282626139,"id":"4","progress":0.7590503202569313,"total":1328,"current":1157}
+{"_e":"metro:bundling:progress","_t":1791282626243,"id":"4","progress":0.7859735002068796,"total":1331,"current":1180}
+{"_e":"metro:bundling:progress","_t":1791282626345,"id":"4","progress":0.8024614004841658,"total":1334,"current":1195}
+{"_e":"metro:bundling:progress","_t":1791282626449,"id":"4","progress":0.8268180377577328,"total":1334,"current":1213}
+{"_e":"metro:bundling:progress","_t":1791282626550,"id":"4","progress":0.8489912017282799,"total":1336,"current":1231}
+{"_e":"metro:bundling:progress","_t":1791282626658,"id":"4","progress":0.8558650094158647,"total":1349,"current":1248}
+{"_e":"metro:bundling:progress","_t":1791282626758,"id":"4","progress":0.8700077405934309,"total":1353,"current":1262}
+{"_e":"metro:bundling:progress","_t":1791282626859,"id":"4","progress":0.8908906047838997,"total":1354,"current":1278}
+{"_e":"metro:bundling:progress","_t":1791282626964,"id":"4","progress":0.8979485573453522,"total":1355,"current":1284}
+{"_e":"metro:bundling:progress","_t":1791282627064,"id":"4","progress":0.9149950872048257,"total":1358,"current":1299}
+{"_e":"metro:bundling:progress","_t":1791282627164,"id":"4","progress":0.9212070594370917,"total":1368,"current":1313}
+{"_e":"metro:bundling:progress","_t":1791282627267,"id":"4","progress":0.9212070594370917,"total":1404,"current":1329}
+{"_e":"metro:bundling:progress","_t":1791282627417,"id":"4","progress":0.9212070594370917,"total":1415,"current":1335}
+{"_e":"metro:bundling:progress","_t":1791282627518,"id":"4","progress":0.9212070594370917,"total":1417,"current":1350}
+{"_e":"metro:bundling:progress","_t":1791282627643,"id":"4","progress":0.9212070594370917,"total":1417,"current":1351}
+{"_e":"metro:bundling:progress","_t":1791282627745,"id":"4","progress":0.9212070594370917,"total":1425,"current":1365}
+{"_e":"metro:bundling:progress","_t":1791282627858,"id":"4","progress":0.9298469387755103,"total":1428,"current":1377}
+{"_e":"metro:bundling:progress","_t":1791282627958,"id":"4","progress":0.9396575135202241,"total":1436,"current":1392}
+{"_e":"metro:bundling:progress","_t":1791282628063,"id":"4","progress":0.9413299660070135,"total":1444,"current":1401}
+{"_e":"metro:bundling:progress","_t":1791282628165,"id":"4","progress":0.9440957934225956,"total":1446,"current":1405}
+{"_e":"metro:bundling:progress","_t":1791282628266,"id":"4","progress":0.9577560921005699,"total":1452,"current":1421}
+{"_e":"metro:bundling:progress","_t":1791282628368,"id":"4","progress":0.9577560921005699,"total":1492,"current":1434}
+{"_e":"metro:bundling:progress","_t":1791282628468,"id":"4","progress":0.9577560921005699,"total":1500,"current":1446}
+{"_e":"metro:bundling:progress","_t":1791282628573,"id":"4","progress":0.9577560921005699,"total":1507,"current":1451}
+{"_e":"metro:bundling:progress","_t":1791282628623,"id":"4","progress":0.9577560921005699,"total":1507,"current":1452}
+{"_e":"metro:bundling:progress","_t":1791282628724,"id":"4","progress":0.9577560921005699,"total":1508,"current":1460}
+{"_e":"metro:bundling:progress","_t":1791282628826,"id":"4","progress":0.9577560921005699,"total":1519,"current":1472}
+{"_e":"metro:bundling:progress","_t":1791282628927,"id":"4","progress":0.9577560921005699,"total":1520,"current":1484}
+{"_e":"metro:bundling:progress","_t":1791282629028,"id":"4","progress":0.9726486428379467,"total":1525,"current":1504}
+{"_e":"metro:bundling:progress","_t":1791282629132,"id":"4","progress":0.9726486428379467,"total":1585,"current":1513}
+{"_e":"metro:bundling:progress","_t":1791282629232,"id":"4","progress":0.9726486428379467,"total":1592,"current":1524}
+{"_e":"metro:bundling:progress","_t":1791282629344,"id":"4","progress":0.9726486428379467,"total":1593,"current":1531}
+{"_e":"metro:bundling:progress","_t":1791282629444,"id":"4","progress":0.9726486428379467,"total":1601,"current":1549}
+{"_e":"metro:bundling:progress","_t":1791282629546,"id":"4","progress":0.9726486428379467,"total":1601,"current":1553}
+{"_e":"metro:bundling:progress","_t":1791282629646,"id":"4","progress":0.9726486428379467,"total":1607,"current":1574}
+{"_e":"metro:bundling:progress","_t":1791282629751,"id":"4","progress":0.9726486428379467,"total":1618,"current":1594}
+{"_e":"metro:bundling:progress","_t":1791282629851,"id":"4","progress":0.9840737614018207,"total":1626,"current":1613}
+{"_e":"metro:bundling:progress","_t":1791282629951,"id":"4","progress":0.9840737614018207,"total":1645,"current":1622}
+{"_e":"metro:bundling:progress","_t":1791282630070,"id":"4","progress":0.9840737614018207,"total":1647,"current":1629}
+{"_e":"metro:bundling:progress","_t":1791282630320,"id":"4","progress":0.9840737614018207,"total":1647,"current":1630}
+{"_e":"metro:bundling:progress","_t":1791282630427,"id":"4","progress":0.9840737614018207,"total":1664,"current":1639}
+{"_e":"metro:bundling:progress","_t":1791282630556,"id":"4","progress":0.9840737614018207,"total":1664,"current":1641}
+{"_e":"metro:bundling:progress","_t":1791282630663,"id":"4","progress":0.9844732127966692,"total":1668,"current":1655}
+{"_e":"metro:bundling:progress","_t":1791282630763,"id":"4","progress":0.9988020366454011,"total":1669,"current":1668}
+{"_e":"metro:bundling:progress","_t":1791282630877,"id":"4","progress":0.999,"total":1673,"current":1673}
+{"_e":"metro:bundling:done","_t":1791282631417,"id":"4","total":1673,"ms":43243.8008}
+{"_e":"metro:client_log","_t":1791282663171,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791282663228,"level":"log","data":["RESPOSTA DO SERVIDOR:","{\"email\": \"admin@empresa.com\", \"id\": 1, \"mensagem\": \"Login realizado com sucesso\", \"tipo\": \"admin\", \"usuario\": \"Administrador\"}"]}
+{"_e":"metro:client_log","_t":1791282664000,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791282664060,"level":"log","data":["RESPOSTA DO SERVIDOR:","{\"email\": \"admin@empresa.com\", \"id\": 1, \"mensagem\": \"Login realizado com sucesso\", \"tipo\": \"admin\", \"usuario\": \"Administrador\"}"]}
+{"_e":"metro:client_log","_t":1791282700378,"level":"error","data":["[ReferenceError: Property 'imagemAberta' doesn't exist]","\n\n\u001b[1mCode: contas.js\u001b[22m\n\u001b[0m \u001b[90m 83 |\u001b[39m       {\u001b[90m/* POPUP DA IMAGEM */\u001b[39m}\n \u001b[90m 84 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mModal\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 85 |\u001b[39m         visible\u001b[33m=\u001b[39m{imagemAberta}\n \u001b[90m    |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 86 |\u001b[39m         transparent\u001b[33m=\u001b[39m{\u001b[36mtrue\u001b[39m}\n \u001b[90m 87 |\u001b[39m         animationType\u001b[33m=\u001b[39m\u001b[32m\"fade\"\u001b[39m\n \u001b[90m 88 |\u001b[39m         onRequestClose\u001b[33m=\u001b[39m{() \u001b[33m=>\u001b[39m setImagemAberta(\u001b[36mfalse\u001b[39m)}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Usuarios (app\\contas.js:85:18)\u001b[39m","\n\n\u001b[1mCode: _layout.js\u001b[22m\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[36mfunction\u001b[39m \u001b[33mLayout\u001b[39m() {\n \u001b[90m 4 |\u001b[39m   \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mStack\u001b[39m\n \u001b[90m   |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m       screenOptions\u001b[33m=\u001b[39m{{\n \u001b[90m 7 |\u001b[39m         headerShown\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 8 |\u001b[39m       }}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Layout (app\\_layout.js:5:5)\u001b[39m"]}
+{"_e":"metro:bundling:failed","_t":1791282726385,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Expected corresponding JSX closing tag for <View>. (110:6)\n\n  108 |         </View>\n  109 |\n> 110 |       </Modal>\n      |       ^\n  111 |\n  112 |\n  113 |       {/* NAVBAR */}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791282737258,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Expected corresponding JSX closing tag for <View>. (105:6)\n\n  103 |         </View>\n  104 |\n> 105 |       </Modal>\n      |       ^\n  106 |\n  107 |\n  108 |       {/* NAVBAR */}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1791282752073,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791282752140,"level":"log","data":["RESPOSTA DO SERVIDOR:","{\"email\": \"admin@empresa.com\", \"id\": 1, \"mensagem\": \"Login realizado com sucesso\", \"tipo\": \"admin\", \"usuario\": \"Administrador\"}"]}
+{"_e":"metro:client_log","_t":1791282758018,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791282758077,"level":"log","data":["USUÁRIOS:","{\"success\": true, \"usuarios\": [{\"email\": \"admin@empresa.com\", \"id\": 1, \"nome\": \"Administrador\", \"tipo\": \"admin\"}, {\"email\": \"joao@empresa.com\", \"id\": 2, \"nome\": \"JoÃ£o\", \"tipo\": \"usuario\"}]}"]}
+{"_e":"metro:client_log","_t":1791282760632,"level":"error","data":["[ReferenceError: Property 'setImagemAberta' doesn't exist]","\n\n\u001b[1mCode: contas.js\u001b[22m\n\u001b[0m \u001b[90m 87 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33mTouchableOpacity\u001b[39m\n \u001b[90m 88 |\u001b[39m               style\u001b[33m=\u001b[39m{styles\u001b[33m.\u001b[39mfecharPopup}\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m               onPress\u001b[33m=\u001b[39m{() \u001b[33m=>\u001b[39m setImagemAberta(\u001b[36mfalse\u001b[39m)}\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m             \u001b[33m>\u001b[39m\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m               \u001b[33m<\u001b[39m\u001b[33mMaterialIcons\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  TouchableOpacity.props.onPress (app\\contas.js:89:30)\u001b[39m"]}
+{"_e":"metro:bundling:failed","_t":1791282770720,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Expected corresponding JSX closing tag for <View>. (94:12)\n\n  92 |               />\n  93 |\n> 94 |             </TouchableOpacity>\n     |             ^\n  95 |\n  96 |\n  97 |           </View>","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1791282776855,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791282777135,"level":"log","data":["USUÁRIOS:","{\"success\": true, \"usuarios\": [{\"email\": \"admin@empresa.com\", \"id\": 1, \"nome\": \"Administrador\", \"tipo\": \"admin\"}, {\"email\": \"joao@empresa.com\", \"id\": 2, \"nome\": \"JoÃ£o\", \"tipo\": \"usuario\"}]}"]}
+{"_e":"metro:bundling:failed","_t":1791282782959,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unexpected token, expected \",\" (84:12)\n\n  82 |       {/* NAVBAR */}\n  83 |\n> 84 |       <View style={styles.navbar}>\n     |             ^\n  85 |\n  86 |         <TouchableOpacity\n  87 |           style={styles.menuButton}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791282846376,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unexpected token, expected \",\" (83:12)\n\n  81 |       {/* NAVBAR */}\n  82 |\n> 83 |       <View style={styles.navbar}>\n     |             ^\n  84 |\n  85 |         <TouchableOpacity\n  86 |           style={styles.menuButton}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791282871301,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unexpected token, expected \",\" (83:12)\n\n  81 |       {/* NAVBAR */}\n  82 |\n> 83 |       <View style={styles.navbar}>\n     |             ^\n  84 |\n  85 |         <TouchableOpacity\n  86 |           style={styles.menuButton}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791282874315,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unexpected token, expected \",\" (83:12)\n\n  81 |       {/* NAVBAR */}\n  82 |\n> 83 |       <View style={styles.navbar}>\n     |             ^\n  84 |\n  85 |         <TouchableOpacity\n  86 |           style={styles.menuButton}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791282878935,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unexpected token, expected \",\" (83:12)\n\n  81 |       {/* NAVBAR */}\n  82 |\n> 83 |       <View style={styles.navbar}>\n     |             ^\n  84 |\n  85 |         <TouchableOpacity\n  86 |           style={styles.menuButton}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791282904050,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unexpected token, expected \",\" (83:12)\n\n  81 |       {/* NAVBAR */}\n  82 |\n> 83 |       <View style={styles.navbar}>\n     |             ^\n  84 |\n  85 |         <TouchableOpacity\n  86 |           style={styles.menuButton}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791282906258,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unexpected token, expected \",\" (83:12)\n\n  81 |       {/* NAVBAR */}\n  82 |\n> 83 |       <View style={styles.navbar}>\n     |             ^\n  84 |\n  85 |         <TouchableOpacity\n  86 |           style={styles.menuButton}","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1791282997573,"level":"error","data":["[TypeError: '' is not a function]","\n\n\u001b[1mCode: contas.js\u001b[22m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 |\u001b[39m \u001b[32m``\u001b[39m\u001b[32m`jsx\u001b[39m\n \u001b[90m   |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 2 |\u001b[39m \u001b[32mimport { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';\u001b[39m\n \u001b[90m 3 |\u001b[39m \u001b[32mimport { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';\u001b[39m\n \u001b[90m 4 |\u001b[39m \u001b[32mimport { Montserrat_400Regular } from '@expo-google-fonts/montserrat';\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  <global> (app\\contas.js:1)\u001b[39m"]}
+{"_e":"metro:bundling:failed","_t":1791282998840,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\contas.js: Unterminated template. (1:3)\n\n> 1 | ```jsx\n    |    ^\n  2 | import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';\n  3 | import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';\n  4 | import { Montserrat_400Regular } from '@expo-google-fonts/montserrat';","importStack":null,"filename":"app\\contas.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1791283002673,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791283002722,"level":"log","data":["USUÁRIOS:","{\"success\": true, \"usuarios\": [{\"email\": \"admin@empresa.com\", \"id\": 1, \"nome\": \"Administrador\", \"tipo\": \"admin\"}, {\"email\": \"joao@empresa.com\", \"id\": 2, \"nome\": \"JoÃ£o\", \"tipo\": \"usuario\"}]}"]}
+{"_e":"metro:client_log","_t":1791283004102,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791283004184,"level":"log","data":["USUÁRIOS:","{\"success\": true, \"usuarios\": [{\"email\": \"admin@empresa.com\", \"id\": 1, \"nome\": \"Administrador\", \"tipo\": \"admin\"}, {\"email\": \"joao@empresa.com\", \"id\": 2, \"nome\": \"JoÃ£o\", \"tipo\": \"usuario\"}]}"]}
+{"_e":"metro:client_log","_t":1791283238026,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791283238080,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791283238081,"level":"log","data":["USUÁRIOS:","{\"success\": true, \"usuarios\": [{\"email\": \"admin@empresa.com\", \"id\": 1, \"nome\": \"Administrador\", \"tipo\": \"admin\"}, {\"email\": \"joao@empresa.com\", \"id\": 2, \"nome\": \"JoÃ£o\", \"tipo\": \"usuario\"}]}"]}
+{"_e":"metro:client_log","_t":1791283238081,"level":"log","data":["USUÁRIOS:","{\"success\": true, \"usuarios\": [{\"email\": \"admin@empresa.com\", \"id\": 1, \"nome\": \"Administrador\", \"tipo\": \"admin\"}, {\"email\": \"joao@empresa.com\", \"id\": 2, \"nome\": \"JoÃ£o\", \"tipo\": \"usuario\"}]}"]}
+{"_e":"metro:bundling:started","_t":1791284055339,"id":"l","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1791284055339,"id":"l","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1791284055340,"id":"l","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1791284055479,"id":"l","total":1,"ms":140.5358}
+{"_e":"metro:client_log","_t":1791284085805,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791284085995,"level":"log","data":["RESPOSTA DO SERVIDOR:","{\"email\": \"admin@empresa.com\", \"id\": 1, \"mensagem\": \"Login realizado com sucesso\", \"tipo\": \"admin\", \"usuario\": \"Administrador\"}"]}
+{"_e":"metro:client_log","_t":1791284086565,"level":"log","data":["STATUS:","200"]}
+{"_e":"metro:client_log","_t":1791284086811,"level":"log","data":["RESPOSTA DO SERVIDOR:","{\"email\": \"admin@empresa.com\", \"id\": 1, \"mensagem\": \"Login realizado com sucesso\", \"tipo\": \"admin\", \"usuario\": \"Administrador\"}"]}
+{"_e":"metro:bundling:failed","_t":1791284521446,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\tabela.js: Expected corresponding JSX closing tag for <TouchableOpacity>. (136:10)\n\n  134 |   }}\n  135 | >\n> 136 |           </View>\n      |           ^\n  137 |         </View>\n  138 |       </Modal>\n  139 |","importStack":null,"filename":"app\\tabela.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791284528679,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\tabela.js: Expected corresponding JSX closing tag for <TouchableOpacity>. (137:10)\n\n  135 | >\n  136 |   \n> 137 |           </View>\n      |           ^\n  138 |         </View>\n  139 |       </Modal>\n  140 |","importStack":null,"filename":"app\\tabela.js","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1791284624235,"id":null,"message":"SyntaxError: C:\\Users\\Aluno\\TCCdasala\\app expo\\App-Almox\\app\\tabela.js: Identifier 'imagemAberta' has already been declared. (19:9)\n\n  17 |   const [menuAberto, setMenuAberto] = useState(false);\n  18 |   const [imagemAberta, setImagemAberta] = useState(false);\n> 19 |   const [imagemAberta, setImagemAberta] = useState(null);\n     |          ^\n  20 |   const [produtos, setProdutos] = useState([]);\n  21 |   const [nomeUsuario, setNomeUsuario] = useState('');\n  22 |   const [tipoUsuario, setTipoUsuario] = useState('');","importStack":null,"filename":"app\\tabela.js","targetModuleName":null,"originModulePath":null}

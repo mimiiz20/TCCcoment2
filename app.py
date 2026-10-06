@@ -541,8 +541,9 @@ def tabela_app():
                 categoria,
                 qtde,
                 estoque_min,
+                preco,
                 descricao,
-                preco
+                imagem
             FROM estoque
             ORDER BY id ASC
         """)
@@ -560,8 +561,9 @@ def tabela_app():
                 "categoria": item[3],
                 "qtde": item[4],
                 "estoque_min": item[5],
+                "preco": float(item[6]) if item[6] is not None else 0,
                 "descricao": item[6],
-                "preco": float(item[7]) if item[7] is not None else 0
+                "imagem": item[8]
             })
 
         return jsonify({
@@ -739,7 +741,6 @@ def cadastro_app():
             'erro': str(erro)
         }), 500
 
-# CONTAS DO APP
 # CONTAS DO APP
 @app.route('/contas_app', methods=['GET'])
 def contas_app():
