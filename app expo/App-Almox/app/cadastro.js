@@ -9,6 +9,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router, useFocusEffect } from 'expo-router';
 
 export default function Cadastro() {
+
+    const [fontsLoaded] = useFonts({
+        Poppins_700Bold,
+        Montserrat_400Regular,
+        Montserrat_700Bold
+    });
+
     const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -75,12 +82,6 @@ export default function Cadastro() {
     Alert.alert('Erro', 'Não foi possível conectar ao servidor.');
     }
     };
-
-    var [fontsLoaded] = useFonts({
-        Poppins_700Bold: Poppins_700Bold,
-        Montserrat_400Regular: Montserrat_400Regular,
-        Montserrat_700Bold: Montserrat_700Bold,
-  });
 
   var [menuAberto, setMenuAberto] = useState(false);
 
@@ -149,7 +150,8 @@ export default function Cadastro() {
             <Text style={styles.logoutTexto}>DESLOGAR</Text>
           </TouchableOpacity>
         </View>
-      )}
+      )};
+
       <View>
         <Text style={styles.titulo}>
           {"Boas-vindas ao\nCadastro de Usuários!"} {/* \n serve pra quebrar a linha, "Cadastro de Usuários!" fica embaixo de "Boas-vindas ao"*/}

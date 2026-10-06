@@ -5,8 +5,15 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router, useFocusEffect } from 'expo-router';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Editar() {
+
+  const [fontsLoaded] = useFonts({
+      Poppins_700Bold,
+      Montserrat_400Regular,
+      Montserrat_700Bold
+  });
 
   const [menuAberto, setMenuAberto] = useState(false);
 
@@ -21,6 +28,7 @@ export default function Editar() {
   const [preco, setPreco] = useState('');
   const [quantidade, setQuantidade] = useState('');
   const [estoqueMin, setEstoqueMin] = useState('');
+  const [imagem, setImagem] = useState(null);
 
   // Controla o tipo do usuário
   const [nomeUsuario, setNomeUsuario] = useState('');
@@ -42,6 +50,29 @@ export default function Editar() {
 
   // Controle de envio
   const [carregando, setCarregando] = useState(false);
+
+  // Permissão para acessar galeria de imagem
+  const escolherImagem = async () => {
+  const permissao = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+  if (!permissao.granted) {
+    Alert.alert(
+      'Permissão necessária',
+      'Permita o acesso às fotos para escolher uma imagem.'
+    );
+    return;
+  }
+
+  const resultado = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ['images'],
+    allowsEditing: true,
+    quality: 0.8,
+  });
+
+  if (!resultado.canceled) {
+    setImagem(resultado.assets[0]);
+  }
+};
 
   // CONFIRMAR OPERAÇÃO
 
@@ -75,77 +106,85 @@ export default function Editar() {
       return;
     }
 
-    setCarregando(true);
+      setCarregando(true);
 
-    try {
+      try {
 
-      const resposta = await fetch(
-        'http://10.154.20.25:5000/entrada_app',
-        {
-          method: 'POST',
+        const formulario = new FormData();
 
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
+        formulario.append('nome', nome);
+        formulario.append('categoria', categoria);
+        formulario.append('qtde', quantidade);
+        formulario.append('responsavel', responsavel);
+        formulario.append('estoque_min', estoqueMin || '0');
+        formulario.append('preco', String(precoNumero));
+        formulario.append('descricao', descricao);
+        formulario.append('tipo', tipo);
 
-          body: new URLSearchParams({
-            nome: nome,
-            categoria: categoria,
-            qtde: quantidade,
-            responsavel: responsavel,
-            estoque_min: estoqueMin || '0',
-            preco: String(precoNumero),
-            descricao: descricao,
-            tipo: tipo,
-          }).toString(),
+        if (imagem) {
+          formulario.append('imagem', {
+            uri: imagem.uri,
+            name: imagem.fileName || 'produto.jpg',
+            type: imagem.mimeType || 'image/jpeg',
+          });
         }
-      );
 
-      const dados = await resposta.json();
+        const resposta = await fetch(
+          'http://10.154.20.25:5000/entrada_app',
+          {
+            method: 'POST',
+            body: formulario,
+          }
+        );
 
-      console.log('STATUS:', resposta.status);
-      console.log('RESPOSTA:', dados);
+        const dados = await resposta.json();
 
-      if (!resposta.ok) {
+        console.log('STATUS:', resposta.status);
+        console.log('RESPOSTA:', dados);
+
+        if (!resposta.ok) {
+          Alert.alert(
+            'Erro',
+            dados.erro || 'Não foi possível realizar a operação'
+          );
+          return;
+        }
+
+        Alert.alert(
+          'Sucesso',
+          tipo === 'entrada'
+            ? 'Entrada realizada com sucesso!'
+            : 'Saída realizada com sucesso!'
+        );
+
+        // Limpa os campos
+        setNome('');
+        setResponsavel('');
+        setDescricao('');
+        setCategoria('');
+        setPreco('');
+        setQuantidade('');
+        setEstoqueMin('');
+        setImagem(null);
+
+        // Vai para a tabela
+        router.replace('/tabela');
+
+      } catch (erro) {
+
+        console.log('ERRO:', erro);
+
         Alert.alert(
           'Erro',
-          dados.erro || 'Não foi possível realizar a operação'
+          'Não foi possível conectar ao servidor'
         );
-        return;
+
+      } finally {
+
+        setCarregando(false);
+
       }
-
-      Alert.alert(
-        'Sucesso',
-        tipo === 'entrada'
-          ? 'Entrada realizada com sucesso!'
-          : 'Saída realizada com sucesso!'
-      );
-
-      // Limpa os campos
-      setNome('');
-      setResponsavel('');
-      setDescricao('');
-      setCategoria('');
-      setPreco('');
-      setQuantidade('');
-      setEstoqueMin('');
-
-      // Vai para a tabela
-      router.replace('/tabela');
-
-    } catch (erro) {
-
-      console.log('ERRO:', erro);
-
-      Alert.alert(
-        'Erro',
-        'Não foi possível conectar ao servidor'
-      );
-
-    } finally {
-      setCarregando(false);
-    }
-  };
+};
 
   return (
     <View style={styles.container}>
@@ -290,7 +329,6 @@ export default function Editar() {
         </View>
 
         {/* CARD */}
-
         <View style={styles.card}>
 
           <Text style={styles.produtosTitulo}>
@@ -300,7 +338,6 @@ export default function Editar() {
           </Text>
 
           {/* NOME */}
-
           <Text style={styles.label}>
             NOME
           </Text>
@@ -314,21 +351,19 @@ export default function Editar() {
           />
 
           {/* RESPONSÁVEL */}
-
           <Text style={styles.label}>
             RESPONSÁVEL
           </Text>
 
           <TextInput
             style={styles.campo}
-            placeholder="Digite o responsável."
+            placeholder="Digite o responsável"
             placeholderTextColor="#8A8A8A"
             value={responsavel}
             onChangeText={setResponsavel}
           />
 
           {/* CATEGORIA */}
-
           <Text style={styles.label}>
             CATEGORIA
           </Text>
@@ -342,7 +377,6 @@ export default function Editar() {
           />
 
             {/* PREÇO */}
-
             <Text style={styles.label}>
               PREÇO
             </Text>
@@ -357,7 +391,6 @@ export default function Editar() {
             />
                 
           {/* QUANTIDADE */}
-
           <Text style={styles.label}>
             QUANTIDADE
           </Text>
@@ -371,9 +404,7 @@ export default function Editar() {
             keyboardType="numeric"
           />
 
-
           {/* ESTOQUE MÍNIMO */}
-
           <Text style={styles.label}>
             ESTOQUE MÍNIMO
           </Text>
@@ -388,7 +419,6 @@ export default function Editar() {
           />
 
           {/* DESCRIÇÃO */}
-
           <Text style={styles.label}>
             DESCRIÇÃO
           </Text>
@@ -405,8 +435,35 @@ export default function Editar() {
             multiline
           />
 
-          {/* CONFIRMAR */}
+          {/* IMAGEM */}
+          <Text style={styles.label}>
+            IMAGEM
+          </Text>
 
+          <TouchableOpacity
+            style={styles.botaoImagem}
+            onPress={escolherImagem}
+          >
+            <MaterialIcons
+              name="image"
+              size={22}
+              color="#FFFFFF"
+            />
+
+            <Text style={styles.textoImagem}>
+              {imagem ? 'ALTERAR IMAGEM' : 'ADICIONAR IMAGEM'}
+            </Text>
+          </TouchableOpacity>
+
+          {imagem && (
+            <Image
+              source={{ uri: imagem.uri }}
+              style={styles.previewImagem}
+              resizeMode="cover"
+            />
+          )}
+
+          {/* CONFIRMAR */}
           <TouchableOpacity
             style={[
               styles.botaoConfirmar,
@@ -610,6 +667,32 @@ const styles = StyleSheet.create({
     height: 80,
     textAlignVertical: 'top',
     paddingTop: 10,
+  },
+
+  botaoImagem: {
+    height: 45,
+    backgroundColor: '#1D3273',
+    borderRadius: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    marginTop: 5,
+  },
+
+  textoImagem: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+
+  previewImagem: {
+    width: '100%',
+    height: 180,
+    marginTop: 12,
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: '#4A64A3',
   },
 
   botaoConfirmar: {

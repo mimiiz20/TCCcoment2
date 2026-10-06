@@ -9,12 +9,6 @@ import { router } from 'expo-router';
 
 export default function Login() {
 
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [senhaFocus, setSenhaFocus] = useState(false);
-
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_700Bold,
@@ -22,6 +16,12 @@ export default function Login() {
     Montserrat_700Bold,
     Poppins_700Bold,
   });
+
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [senhaFocus, setSenhaFocus] = useState(false);
 
   const fazerLogin = async () => {
   try {

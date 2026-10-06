@@ -9,8 +9,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Usuarios() {
 
   const [fontsLoaded] = useFonts({
-    Poppins_700Bold,
-    Montserrat_400Regular,
+      Poppins_700Bold,
+      Montserrat_400Regular,
+      Montserrat_700Bold
   });
 
   const [produtoAberto, setProdutoAberto] = useState(null);

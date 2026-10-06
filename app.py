@@ -315,9 +315,10 @@ def entrada():
 
     return jsonify({"success": True}), 200
 
-# ENTRADA DO APP
+# ENTRADA DO APLICATIVO
 @app.route('/entrada_app', methods=['POST'])
 def entrada_app():
+
     nome = request.form.get('nome')
     categoria = request.form.get('categoria')
     qtde = request.form.get('qtde')
@@ -326,8 +327,8 @@ def entrada_app():
     preco = request.form.get('preco')
     descricao = request.form.get('descricao')
     tipo = request.form.get('tipo')
+    imagem = request.files.get('imagem')
 
-# Limpa os dados
     if nome:
         nome = nome.strip()
     if categoria:
@@ -337,7 +338,6 @@ def entrada_app():
     if descricao:
         descricao = descricao.strip()
 
-# Faz a validação se todos os campos foram preenchidos
     if not nome or not qtde or not responsavel or not tipo:
         return jsonify({
             "success": False,
@@ -362,6 +362,28 @@ def entrada_app():
             "erro": "Quantidade, preço ou estoque mínimo inválido"
         }), 400
 
+    caminho_imagem = None
+
+    if imagem:
+        nome_arquivo = secure_filename(imagem.filename)
+
+        pasta = os.path.join(
+            app.root_path,
+            'static',
+            'uploads'
+        )
+
+        os.makedirs(pasta, exist_ok=True)
+
+        imagem.save(
+            os.path.join(pasta, nome_arquivo)
+        )
+
+        caminho_imagem = url_for(
+            'static',
+            filename=f'uploads/{nome_arquivo}'
+        )
+
     conexao = None
     cursor = None
 
@@ -369,9 +391,8 @@ def entrada_app():
         conexao = get_db()
         cursor = conexao.cursor()
 
-# Começa a procurar o produto no banco pelo ID
         cursor.execute("""
-            SELECT qtde, preco, categoria, estoque_min, descricao
+            SELECT qtde, preco, categoria, estoque_min, descricao, imagem
             FROM estoque
             WHERE TRIM(nome) = TRIM(%s)
             LIMIT 1
@@ -379,34 +400,33 @@ def entrada_app():
 
         produto = cursor.fetchone()
 
-        print("TIPO:", tipo)
-        print("NOME:", repr(nome))
-        print("QUANTIDADE RECEBIDA:", qtde)
-        print("PREÇO RECEBIDO:", preco)
-        print("PRODUTO ENCONTRADO:", produto)
-
-# ENTRADA (SOMA)
+        # ENTRADA (SOMA)
         if tipo == "entrada":
-            # Se o produto já existe ele vai somar
+
             if produto:
+
                 qtde_atual = int(produto[0] or 0)
                 preco_atual = float(produto[1] or 0)
-                categoria_atual = produto[2]
-                estoque_min_atual = produto[3]
-                descricao_atual = produto[4]
 
-                # Aqui ele soma a quantidade e o preço
                 nova_qtde = qtde_atual + qtde
                 novo_preco = preco_atual + preco
 
-                categoria_final = categoria if categoria else categoria_atual
-                estoque_min_final = estoque_min if estoque_min else estoque_min_atual
-                descricao_final = descricao if descricao else descricao_atual
+                categoria_final = categoria if categoria else produto[2]
+                estoque_min_final = estoque_min if estoque_min else produto[3]
+                descricao_final = descricao if descricao else produto[4]
+
+                # Mantém a imagem antiga se não escolher outra
+                imagem_final = caminho_imagem if caminho_imagem else produto[5]
 
                 cursor.execute("""
                     UPDATE estoque
-                    SET qtde = %s, preco = %s, categoria = %s,
-                        estoque_min = %s, descricao = %s, responsavel = %s
+                    SET qtde = %s,
+                        preco = %s,
+                        categoria = %s,
+                        estoque_min = %s,
+                        descricao = %s,
+                        responsavel = %s,
+                        imagem = %s
                     WHERE TRIM(nome) = TRIM(%s)
                 """, (
                     nova_qtde,
@@ -415,17 +435,16 @@ def entrada_app():
                     estoque_min_final,
                     descricao_final,
                     responsavel,
+                    imagem_final,
                     nome
                 ))
 
-                print("LINHAS ALTERADAS:", cursor.rowcount)
-
-            # Se o produto não existe vai adicionar um novo campo
             else:
                 cursor.execute("""
                     INSERT INTO estoque
-                    (responsavel, nome, categoria, qtde, estoque_min, descricao, preco)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    (responsavel, nome, categoria, qtde,
+                     estoque_min, descricao, preco, imagem)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
                     responsavel,
                     nome,
@@ -433,15 +452,16 @@ def entrada_app():
                     qtde,
                     estoque_min,
                     descricao,
-                    preco
+                    preco,
+                    caminho_imagem
                 ))
 
                 nova_qtde = qtde
                 novo_preco = preco
 
-# SAÍDA (SUBTRAI)
+        # SAÍDA (SUBTRAI)
         elif tipo == "saida":
-            # Se o produto não existir
+
             if not produto:
                 return jsonify({
                     "success": False,
@@ -450,32 +470,33 @@ def entrada_app():
 
             qtde_atual = int(produto[0] or 0)
             preco_atual = float(produto[1] or 0)
-            categoria_atual = produto[2]
-            estoque_min_atual = produto[3]
-            descricao_atual = produto[4]
 
-            # Verifica no banco
             if qtde_atual < qtde:
                 return jsonify({
                     "success": False,
                     "erro": f"Estoque insuficiente. Disponível: {qtde_atual}"
                 }), 400
 
-            # Diminui a quantidade e o preço
             nova_qtde = qtde_atual - qtde
             novo_preco = preco_atual - preco
 
             if novo_preco < 0:
                 novo_preco = 0
 
-            categoria_final = categoria if categoria else categoria_atual
-            estoque_min_final = estoque_min if estoque_min else estoque_min_atual
-            descricao_final = descricao if descricao else descricao_atual
+            categoria_final = categoria if categoria else produto[2]
+            estoque_min_final = estoque_min if estoque_min else produto[3]
+            descricao_final = descricao if descricao else produto[4]
+            imagem_final = caminho_imagem if caminho_imagem else produto[5]
 
             cursor.execute("""
                 UPDATE estoque
-                SET qtde = %s, preco = %s, categoria = %s,
-                    estoque_min = %s, descricao = %s, responsavel = %s
+                SET qtde = %s,
+                    preco = %s,
+                    categoria = %s,
+                    estoque_min = %s,
+                    descricao = %s,
+                    responsavel = %s,
+                    imagem = %s
                 WHERE TRIM(nome) = TRIM(%s)
             """, (
                 nova_qtde,
@@ -484,10 +505,9 @@ def entrada_app():
                 estoque_min_final,
                 descricao_final,
                 responsavel,
+                imagem_final,
                 nome
             ))
-
-            print("LINHAS ALTERADAS:", cursor.rowcount)
 
         else:
             return jsonify({
@@ -501,10 +521,12 @@ def entrada_app():
             "success": True,
             "mensagem": "Operação realizada com sucesso",
             "nova_quantidade": nova_qtde,
-            "novo_preco": novo_preco
+            "novo_preco": novo_preco,
+            "imagem": caminho_imagem
         }), 200
 
     except Exception as erro:
+
         print("ERRO ENTRADA:", repr(erro))
 
         if conexao:
@@ -516,13 +538,14 @@ def entrada_app():
         }), 500
 
     finally:
+
         if cursor:
             cursor.close()
 
         if conexao:
             conexao.close()
 
-# TABELA DO APP
+# TABELA DO APLICATIVO
 @app.route('/tabela_app', methods=['GET'])
 def tabela_app():
 

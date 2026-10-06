@@ -15,7 +15,7 @@ export default function Tabela() {
 
   const [produtoAberto, setProdutoAberto] = useState(null);
   const [menuAberto, setMenuAberto] = useState(false);
-  const [imagemAberta, setImagemAberta] = useState(false);
+  const [imagemAberta, setImagemAberta] = useState(null);
   const [produtos, setProdutos] = useState([]);
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [tipoUsuario, setTipoUsuario] = useState('');

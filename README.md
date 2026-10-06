@@ -1,2 +1,0 @@
-- Arrumar ordem das tabelas
-- Arrumar a sidebar, tem que ter o nome do admin e nao nome pré-definido
