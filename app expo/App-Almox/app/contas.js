@@ -164,27 +164,25 @@ export default function Usuarios() {
         </TouchableOpacity>
 
 
-        <TouchableOpacity
-          onPress={() => router.push('/contas')}
-        >
+        {tipoUsuario === 'admin' && (
+          <>
+            <TouchableOpacity
+              onPress={() => router.push('/contas')}
+            >
+              <Text style={styles.link}>
+                CONTAS
+              </Text>
+            </TouchableOpacity>
 
-          <Text style={styles.link}>
-            CONTAS
-          </Text>
-
-        </TouchableOpacity>
-
-
-        <TouchableOpacity
-          onPress={() => router.push('/cadastro')}
-        >
-
-          <Text style={styles.link}>
-            CADASTRO
-          </Text>
-
-        </TouchableOpacity>
-
+            <TouchableOpacity
+              onPress={() => router.push('/cadastro')}
+            >
+              <Text style={styles.link}>
+                CADASTRO
+              </Text>
+            </TouchableOpacity>
+          </>
+        )}
       </View>
 
 
@@ -315,7 +313,7 @@ export default function Usuarios() {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.botaoExcluir}
-                    onPress={() => excluirItem(item.id)}
+                    onPress={() => excluirUser(item.id)}
                   >
                     <MaterialIcons
                       name="delete"

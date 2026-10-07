@@ -163,13 +163,25 @@ const excluirItem = (id) => {
           <Text style={styles.link}>EDITAR</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/contas')}>
-          <Text style={styles.link}>CONTAS</Text>
-        </TouchableOpacity>
+        {tipoUsuario === 'admin' && (
+          <>
+            <TouchableOpacity
+              onPress={() => router.push('/contas')}
+            >
+              <Text style={styles.link}>
+                CONTAS
+              </Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/cadastro')}>
-          <Text style={styles.link}>CADASTRO</Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push('/cadastro')}
+            >
+              <Text style={styles.link}>
+                CADASTRO
+              </Text>
+            </TouchableOpacity>
+          </>
+        )}
       </View>
 
       {/* SIDEBAR */}
