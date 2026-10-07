@@ -3,13 +3,13 @@ import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/in
 import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
 import { Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from 'react';
-import { router } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState } from 'react'; // Serve pra criar uma informação que pode mudar durante o funcionamento da tela
+import { router } from 'expo-router'; // Serve para fazer a navegação das telas
+import AsyncStorage from '@react-native-async-storage/async-storage'; //Guarda as informações de login localmente
 
-export default function Login() {
+export default function Login() { // A nossa tela é uma função que será construída como um componente
 
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({ // Retorna uma informação se as fontes que foram importadas já foram carregadas
     Inter_400Regular,
     Inter_700Bold,
     Montserrat_400Regular,
@@ -17,38 +17,45 @@ export default function Login() {
     Poppins_700Bold,
   });
 
+  if (!fontsLoaded) { // Aqui serve se as fontes não forem carregadas não é pra mostrar a tela ainda
+    return null;
+  }
+
+  // Aqui é guardado o valor de email e senha, e antes do usuário digitar o valor inicial é vazio
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
+  // Aqui é guardado o valor verdadeiro ou falso, que quando o usuário clica na caixa de input é ativado TRUE (que depois é usado pra mudar a cor das bordas pra azul)
   const [emailFocus, setEmailFocus] = useState(false);
   const [senhaFocus, setSenhaFocus] = useState(false);
 
-  const fazerLogin = async () => {
-  try {
-    const resposta = await fetch('http://10.154.20.25:5000/login_app', {
-      method: 'POST',
+  // Criamos uma função de fazerLogin, pra depois poder ser utilizada no botão de entrar na página
+  const fazerLogin = async () => { // A função trabalha com operações assíncronas (que trabalham juntas ao Flask e esperam um e outro se conversarem)
+  try { // Significa que ele ira tentar fazer a conexão com o Flask (se der certo, o código continua e se der erro ele vai lá pro catch)
+    const resposta = await fetch('http://10.154.20.25:5000/login_app', { // Fetch faz uma requisição ao servidor Flask, recebendo a rota de login específica para o app
+      method: 'POST', // As informações de email e senha estão sendo enviados pelo método POST
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', // Isso informa ao servidor que os dados enviados  tem que ser em formato JSON
       },
-      body: JSON.stringify({
+      body: JSON.stringify({ // O JavaScript tem um objeto e precisa ser transformado em JSON para enviar a requisição
         email: email,
         senha: senha,
       }),
     });
 
-    const dados = await resposta.json();
+    const dados = await resposta.json(); // Aqui transformamos novamente o JSON em objetvo para ser requisitado depois no código (dados.tipo, dados.usuario)
 
-    console.log('STATUS:', resposta.status);
-    console.log('RESPOSTA DO SERVIDOR:', dados);
+    console.log('STATUS:', resposta.status); // Mostra no terminal qual o status da requisição do usuário
+    console.log('RESPOSTA DO SERVIDOR:', dados); // Mostra a resposta do servidor 
 
-    if (!resposta.ok) {
-      alert(dados.mensagem || 'Email ou senha incorretos');
-      return;
+    if (!resposta.ok) { // Se a requisição não der certo 
+      alert(dados.mensagem || 'Email ou senha incorretos'); // Ai uma mensagem de alerta será enviada 
+      return; // Para a função da mensagem
     }
 
-    await AsyncStorage.setItem('tipoUsuario', dados.tipo);
-    await AsyncStorage.setItem('nomeUsuario', dados.usuario);
-    await AsyncStorage.setItem('emailUsuario', dados.email);
+    await AsyncStorage.setItem('tipoUsuario', dados.tipo); // Salva o tipo de usuário
+    await AsyncStorage.setItem('nomeUsuario', dados.usuario); // Aqui salvamos o nome do usuário, informado no banco e no cadastro de usuários
+    await AsyncStorage.setItem('emailUsuario', dados.email); // Salva o email do usuário
 
     router.replace('/tabela');
 
@@ -57,10 +64,6 @@ export default function Login() {
     alert('Não foi possível conectar ao servidor');
   }
 };
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   return (
     <View style={styles.container}>
@@ -144,7 +147,7 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  
+
   container: {
     flex: 1,
   },
