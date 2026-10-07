@@ -10,11 +10,13 @@ import { router, useFocusEffect } from 'expo-router';
 
 export default function Cadastro() {
 
-    const [fontsLoaded] = useFonts({
-        Poppins_700Bold,
-        Montserrat_400Regular,
-        Montserrat_700Bold
-    });
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_700Bold,
+    Montserrat_400Regular,
+    Montserrat_700Bold,
+    Poppins_700Bold,
+  });
 
     const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
@@ -102,11 +104,15 @@ export default function Cadastro() {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/tabela')}>
-          <Text style={styles.link}>ESTOQUE</Text>
+          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}>
+            ESTOQUE
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/editar')}>
-          <Text style={styles.link}>EDITAR</Text>
+          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}>
+            EDITAR
+          </Text>
         </TouchableOpacity>
 
         {tipoUsuario === 'admin' && (
@@ -257,10 +263,18 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         zIndex: 10,
     },
+
     link: {
       color: '#FFFFFF',
       fontSize: 14,
       marginLeft: 22,
+      fontFamily: 'Poppins_700Bold',
+    },
+
+    linkUsuario: {
+      color: '#FFFFFF',
+      fontSize: 14,
+      marginLeft: 80,
       fontFamily: 'Poppins_700Bold',
     },
 

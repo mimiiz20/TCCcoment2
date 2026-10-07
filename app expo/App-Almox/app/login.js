@@ -3,9 +3,9 @@ import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/in
 import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
 import { Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { LinearGradient } from 'expo-linear-gradient';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
 import { router } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login() {
 
@@ -64,7 +64,6 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-
       <Image
         source={require('../assets/industria.png')}
         style={styles.background}
@@ -82,7 +81,6 @@ export default function Login() {
       />
 
       <View style={styles.content}>
-
         <Text style={styles.paragraph1}>
           BOAS-VINDAS
         </Text>
@@ -92,7 +90,6 @@ export default function Login() {
         </Text>
 
         <View style={styles.inputContainer}>
-
           <Image
             source={require('../assets/fiep.png')}
             style={styles.logo}
@@ -140,16 +137,14 @@ export default function Login() {
               ENTRAR
             </Text>
           </TouchableOpacity>
-
         </View>
-
       </View>
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
   },

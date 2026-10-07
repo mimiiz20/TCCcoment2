@@ -9,8 +9,11 @@ import { router, useFocusEffect } from 'expo-router';
 export default function Tabela() {
 
   const [fontsLoaded] = useFonts({
-    Poppins_700Bold,
+    Inter_400Regular,
+    Inter_700Bold,
     Montserrat_400Regular,
+    Montserrat_700Bold,
+    Poppins_700Bold,
   });
 
   const [produtoAberto, setProdutoAberto] = useState(null);
@@ -156,11 +159,15 @@ const excluirItem = (id) => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/tabela')}>
-          <Text style={styles.link}>ESTOQUE</Text>
+          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}>
+            ESTOQUE
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/editar')}>
-          <Text style={styles.link}>EDITAR</Text>
+          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}>
+            EDITAR
+          </Text>
         </TouchableOpacity>
 
         {tipoUsuario === 'admin' && (
@@ -333,10 +340,12 @@ const excluirItem = (id) => {
 }
 
 const styles = StyleSheet.create({
+
   background: {
     flex: 1,
     backgroundColor: '#F0F1F2',
   },
+
   titulo: {
     fontSize: 25,
     textAlign: 'center',
@@ -344,6 +353,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     fontFamily: 'Poppins_700Bold',
   },
+
     navbar: {
     height: 60,
     backgroundColor: '#1D3273',
@@ -355,12 +365,21 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     zIndex: 10,
   },
+
   link: {
     color: '#FFFFFF',
     fontSize: 14,
     marginLeft: 25,
     fontFamily: 'Poppins_700Bold',
   },
+
+  linkUsuario: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    marginLeft: 80,
+    fontFamily: 'Poppins_700Bold',
+  },
+
   tabela: {
     marginHorizontal: 15,
     backgroundColor: '#FFFFFF',
@@ -369,6 +388,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
   },
+
   sidebar: {
     position: 'absolute',
     left: 0,
@@ -380,24 +400,28 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingHorizontal: 20,
    },
+
   sidebarTitulo: {
     color: '#FFFFFF',
     fontSize: 22,
     fontFamily: 'Poppins_700Bold',
     marginBottom: 30,
   },
+
   usuario: {
     color: '#FFFFFF',
     fontSize: 18,
     fontFamily: 'Poppins_700Bold',
     marginBottom: 5,
   },
+
   tipo: {
     color: '#FFFFFF',
     fontSize: 14,
     fontFamily: 'Montserrat_400Regular',
     marginBottom: 30,
   },
+
   logout: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -406,11 +430,13 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: 'rgba(255,255,255,0.3)',
   },
+
   logoutTexto: {
     color: '#FFFFFF',
     fontSize: 14,
     fontFamily: 'Poppins_700Bold',
   },
+
   closeButton: {
     position: 'absolute',
     right: 10,
@@ -420,12 +446,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   linha: {
     flexDirection: 'row',
     minHeight: 48,
     borderBottomWidth: 1,
     borderBottomColor: '#F28705',
   },
+
   id: {
     width: '15%',
     alignItems: 'center',
@@ -433,6 +461,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: '#F28705',
   },
+
   nome: {
     width: '30%',
     alignItems: 'center',
@@ -440,6 +469,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: '#F28705',
   },
+
   responsavel: {
     width: '35%',
     alignItems: 'center',
@@ -447,17 +477,20 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: '#F28705',
   },
+
   cabecalho: {
     fontFamily: 'Poppins_700Bold',
     fontSize: 13,
     color: '#333333',
     textAlign: 'center',
   },
+
   texto: {
     fontSize: 14,
     color: '#333333',
     textAlign: 'center',
   },
+
   acao: {
     width: '20%',
     flexDirection: 'row',
@@ -465,6 +498,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 8,
   },
+
   botao: {
     width: 26,
     height: 26,
@@ -473,6 +507,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   botaoExcluir: {
     width: 26,
     height: 26,
@@ -482,6 +517,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
   },
+
   botaoImagem: {
     width: 40,
     height: 40,
@@ -492,26 +528,31 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
   },
+
   detalhes: {
     padding: 12,
     backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderBottomColor: '#F28705',
   },
+
   detalhe: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 4,
   },
+
   negrito: {
     fontWeight: 'bold',
   },
+
   fundoPopup: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   popup: {
     width: '80%',
     height: '60%',
@@ -521,6 +562,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   fecharPopup: {
     position: 'absolute',
     top: 10,
@@ -530,6 +572,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 5,
   },
+
   imagemPopup: {
     width: '100%',
     height: '80%',

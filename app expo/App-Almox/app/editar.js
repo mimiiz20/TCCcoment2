@@ -11,9 +11,11 @@ import * as ImagePicker from 'expo-image-picker';
 export default function Editar() {
 
   const [fontsLoaded] = useFonts({
-      Poppins_700Bold,
-      Montserrat_400Regular,
-      Montserrat_700Bold
+    Inter_400Regular,
+    Inter_700Bold,
+    Montserrat_400Regular,
+    Montserrat_700Bold,
+    Poppins_700Bold,
   });
 
   const [menuAberto, setMenuAberto] = useState(false);
@@ -203,18 +205,14 @@ export default function Editar() {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => router.push('/tabela')}
-        >
-          <Text style={styles.link}>
+        <TouchableOpacity onPress={() => router.push('/tabela')}>
+          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}>
             ESTOQUE
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => router.push('/editar')}
-        >
-          <Text style={styles.link}>
+        <TouchableOpacity onPress={() => router.push('/editar')}>
+          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}>
             EDITAR
           </Text>
         </TouchableOpacity>
@@ -518,6 +516,13 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 14,
     marginLeft: 22,
+    fontFamily: 'Poppins_700Bold',
+  },
+
+  linkUsuario: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    marginLeft: 80,
     fontFamily: 'Poppins_700Bold',
   },
 
