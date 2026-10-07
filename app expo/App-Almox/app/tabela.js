@@ -131,7 +131,7 @@ const excluirItem = (id) => {
       {imagemAberta && (
         <Image
           source={{
-            uri: `http://10.154.20.25:5000/${imagemAberta}`
+            uri: `http://10.154.20.25:5000${imagemAberta}`
           }}
           style={styles.imagemPopup}
           resizeMode="contain"
