@@ -13,6 +13,9 @@ docker run -d --name almoxarifado-mysql --network almoxarifado-rede -p 3306:3306
 docker stop almox
 docker rm almox
 
+docker stop almoxarifado-mysql
+docker rm almoxarifado-mysql
+
 
 ## VERIFICAR O BANCO DE INSERÇÃO DE PRODUOS E USUÁRIOS
 docker exec -it almoxarifado-mysql mysql -u root

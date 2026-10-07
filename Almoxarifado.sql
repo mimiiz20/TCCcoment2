@@ -30,7 +30,7 @@ VALUES ("Vivianne", "Alicate", "Ferramenta", 8, 28, 28.00, "Alicate da marca Tra
 INSERT INTO usuarios (user, email, tipo, senha)
 VALUES ('Administrador', 'admin@empresa.com', 'admin', '$2a$12$glWRAuHWTu6VOfiVxBmFNON0HiHey93me9JvMPsTEnNrI0GcB3aMW');
 INSERT INTO usuarios (user, email, tipo, senha)
-VALUES ('João', 'joao@empresa.com', 'usuario', '$2b$12$lDdSXPZpJxgQcafk/zhrnOOvU1KHfuig5Cy90cHjWaWhDC0ZFLRmK');	
+VALUES ('Joao', 'joao@empresa.com', 'usuario', '$2b$12$lDdSXPZpJxgQcafk/zhrnOOvU1KHfuig5Cy90cHjWaWhDC0ZFLRmK');	
 
 
 

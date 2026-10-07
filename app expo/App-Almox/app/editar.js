@@ -4,6 +4,7 @@ import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/mo
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { File } from 'expo-file-system';
 import { router, useFocusEffect } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -121,12 +122,10 @@ export default function Editar() {
         formulario.append('descricao', descricao);
         formulario.append('tipo', tipo);
 
-        if (imagem) {
-          formulario.append('imagem', {
-            uri: imagem.uri,
-            name: imagem.fileName || 'produto.jpg',
-            type: imagem.mimeType || 'image/jpeg',
-          });
+        if (imagem?.uri) {
+          const arquivo = new File(imagem.uri);
+
+          formulario.append('imagem', arquivo);
         }
 
         const resposta = await fetch(

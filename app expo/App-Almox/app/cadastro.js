@@ -150,7 +150,7 @@ export default function Cadastro() {
             <Text style={styles.logoutTexto}>DESLOGAR</Text>
           </TouchableOpacity>
         </View>
-      )};
+      )}
 
       <View>
         <Text style={styles.titulo}>
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
     },
 
-    input: {
+  input: {
     width: 240,
     height: 40,
     alignSelf: 'center',
@@ -354,16 +354,16 @@ inputAtivo: {
         alignSelf: 'center',
     },
     input_user: {
-  width: 240,
-  height: 40,
-  alignSelf: 'center',
-  backgroundColor: '#FFFFFF',
-  borderRadius: 5,
-  borderWidth: 1,
-  borderColor: '#D4D4D4',
-  marginBottom: 20,
-  paddingHorizontal: 10,
-},
+      width: 240,
+      height: 40,
+      alignSelf: 'center',
+      backgroundColor: '#FFFFFF',
+      borderRadius: 5,
+      borderWidth: 1,
+      borderColor: '#D4D4D4',
+      marginBottom: 20,
+      paddingHorizontal: 10,
+    },
 
 input_email: {
   width: 240,
