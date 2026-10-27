@@ -1,10 +1,13 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Modal, Alert} from 'react-native';
+// FlatList: serve exibir listas de elementos de forma eficiente renderizando os itens necessários 
+// Modal: exibe uma janela sobre o conteúdo principal sem precisar abrir outra tela
+// Alert: Exibe as mensagens de erro de caixas de diálogo 
+import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Modal, Alert} from 'react-native'; 
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
 import {Inter_400Regular, Inter_700Bold} from '@expo-google-fonts/inter';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useState, useCallback } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState, useCallback } from 'react'; // useCallback: serve para preservar a mesma referência de uma função entre renderizações (evitandoe erros)
+import AsyncStorage from '@react-native-async-storage/async-storage'; // É utilizado para armazenar pequenos dados localmente, permitindo que fiquem disponíveis mesmo após o fechamento do app
 import { router, useFocusEffect } from 'expo-router';
 
 export default function Tabela() {
@@ -17,35 +20,38 @@ export default function Tabela() {
     Poppins_700Bold,
   });
 
+  // Essa parte tem a mesma funcionalidade para todos os consts. Por exemplo, produtoAberto guarda o input selecionado, setProduto altera o produto mudando o estilo
+  // e depois o useState serve para definir o valor inicial que começa vazio
   const [produtoAberto, setProdutoAberto] = useState(null);
-  const [menuAberto, setMenuAberto] = useState(false);
-  const [imagemAberta, setImagemAberta] = useState(null);
-  const [produtos, setProdutos] = useState([]);
-  const [nomeUsuario, setNomeUsuario] = useState('');
+  const [menuAberto, setMenuAberto] = useState(false); // O menu começa fechado, por isso o false, já que precisam selecionar ele 
+  const [imagemAberta, setImagemAberta] = useState(null); // Valor vazio atém o modal da imagem for adicionada e aberta
+  const [produtos, setProdutos] = useState([]); // Inicia um estado com um array vazio, que quando a lista de produtos for enviada, ele atualiza
+  const [nomeUsuario, setNomeUsuario] = useState(''); // Define uma string vazia como valor inicial
   const [tipoUsuario, setTipoUsuario] = useState('');
 
-  useFocusEffect(
-    useCallback(() => {
-      const carregarUsuario = async () => {
-        const nome = await AsyncStorage.getItem('nomeUsuario');
+  useFocusEffect( // Executa um efeito de foco, quando o usuário entra ou retorna na tela
+    useCallback(() => { // Memoriza a função enquanto suas dependências não mudaram
+      const carregarUsuario = async () => { // Define a função assincrona
+        const nome = await AsyncStorage.getItem('nomeUsuario'); // Ele vai consultar o nome do usuário e o tipo dele, serve pra ser utilizado para mostrar na sidebar
         const tipo = await AsyncStorage.getItem('tipoUsuario');
 
+        // O opereador || significa que ele vai pegar o valor a esquerda, e se nao for verdadeiro ele vai receber uma string vazia
         setNomeUsuario(nome || '');
         setTipoUsuario(tipo || '');
       };
 
-      carregarUsuario();
+      carregarUsuario(); // Execução da função
     }, [])
   );
 
   useFocusEffect(
   useCallback(() => {
-    const buscarProdutos = async () => {
-      try {
-        const resposta = await fetch('http://10.154.20.212:5000/tabela_app');
-        const dados = await resposta.json();
+    const buscarProdutos = async () => { // Declara a função que vai buscar os produtos
+      try { // Try: função de tratamento de possíveis erros durante a busca do Flask
+        const resposta = await fetch('http://10.154.20.212:5000/tabela_app'); // Fetch: realiza uma requisição HTTP para acessar o endereço da maquina e a rota criada no app.py
+        const dados = await resposta.json(); // Interpreta os dados enviados em JSON, aguarda a conversão e armazena em "dados"
 
-        if (dados.success) {
+        if (dados.success) { // Se os dados retornarem "sucess" na API 
           const produtosFormatados = dados.produtos.map((item) => ({
             id: item.id,
             responsavel: item.responsavel,

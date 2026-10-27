@@ -22,7 +22,7 @@ export default function Login() {
   const [senha, setSenha] = useState('');
 
   // Aqui é guardado o valor verdadeiro ou falso, que quando o usuário clica na caixa de input é ativado TRUE (que depois é usado pra mudar a cor das bordas pra azul)
-  const [emailFocus, setEmailFocus] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false); // O campo não foi selecionado, fica emailFocus, se for ele vira setEmailFocus
   const [senhaFocus, setSenhaFocus] = useState(false);
 
   // Só retorna depois de executar todos os Hooks
@@ -58,29 +58,29 @@ export default function Login() {
     await AsyncStorage.setItem('nomeUsuario', dados.usuario); // Aqui salvamos o nome do usuário, informado no banco e no cadastro de usuários
     await AsyncStorage.setItem('emailUsuario', dados.email); // Salva o email do usuário
 
-    router.replace('/tabela');
+    router.replace('/tabela'); // Se estiver tudo certo, ele direciona/substitui o usuário para tela de tabela.js
 
-  } catch (erro) {
-    console.log(erro);
-    alert('Não foi possível conectar ao servidor');
+  } catch (erro) { // Captura possíveis erros que podem ocorrer durante a tentativa de login
+    console.log(erro); // Exibe o erro no console para ajudar a identificar o problema
+    alert('Não foi possível conectar ao servidor'); // Exibe essa mensagem no celular do usuário via JSON 
   }
 };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container}> 
       <Image
         source={require('../assets/industria.png')}
         style={styles.background}
-        resizeMode="cover"
+        resizeMode="cover" // Faz a imagem preencher a área disponível, podendo cortar partes dela
       />
 
       <LinearGradient
         colors={[
-          'rgba(29, 50, 115, 0.25)',
+          'rgba(29, 50, 115, 0.25)', 
           'rgba(82, 104, 168, 0.95)'
         ]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
+        start={{ x: 0, y: 0 }} // Define o início do gradiente no topo (0 é transparente e 1 é opaco)
+        end={{ x: 0, y: 1 }} // Define o final do gradiente
         style={styles.gradient}
       />
 
@@ -93,7 +93,7 @@ export default function Login() {
           AO SENAI ALMOXARIFADO
         </Text>
 
-        <View style={styles.inputContainer}>
+        <View style={styles.inputContainer}> // Agrupa todos os elementos do quadro branco
           <Image
             source={require('../assets/fiep.png')}
             style={styles.logo}
@@ -105,15 +105,15 @@ export default function Login() {
 
           <TextInput
             style={[
-              styles.input,
-              emailFocus && styles.inputFocus
+              styles.input, // Define estilo padrão antes do usuário clicar no campo input
+              emailFocus && styles.inputFocus // emailFocus agora é true, então o estilo inputFocus é ativado
             ]}
-            placeholder="seunome@empresa.com"
-            placeholderTextColor="#888"
-            value={email}
-            onChangeText={setEmail}
-            onFocus={() => setEmailFocus(true)}
-            onBlur={() => setEmailFocus(false)}
+            placeholder="seunome@empresa.com" // Sugestão dentro da caixa input
+            placeholderTextColor="#888" // Cor do textinho
+            value={email} // Vincula o conteúdo digitado a variável email
+            onChangeText={setEmail} // Atualiza a variável conforme o usuário vai digitando
+            onFocus={() => setEmailFocus(true)} // Ativa o estado de foco quando o usuário seleciona o campo (true)
+            onBlur={() => setEmailFocus(false)} // Desativa o estado de foco quando o usuário sai do campo (false)
           />
 
           <Text style={styles.senha}>
@@ -123,19 +123,19 @@ export default function Login() {
           <TextInput
             style={[
               styles.input,
-              senhaFocus && styles.inputFocus
+              senhaFocus && styles.inputFocus // senhaFocus agora é true, então o estilo senhaFocus é ativado
             ]}
-            placeholder="Digite sua senha"
-            placeholderTextColor="#888"
-            value={senha}
-            onChangeText={setSenha}
-            onFocus={() => setSenhaFocus(true)}
-            onBlur={() => setSenhaFocus(false)}
+            placeholder="Digite sua senha" // Sugestão dentro da caixa input
+            placeholderTextColor="#888" // Cor do textinho
+            value={senha} // Vincula o conteúdo digitado a variável senha
+            onChangeText={setSenha} // Atualiza a variável conforme o usuário vai digitando
+            onFocus={() => setSenhaFocus(true)} // Ativa o estado de foco quando o usuário seleciona o campo (true)
+            onBlur={() => setSenhaFocus(false)} // Desativa o estado de foco quando o usuário sai do campo (false)
           />
 
           <TouchableOpacity
             style={styles.button}
-            onPress={fazerLogin}
+            onPress={fazerLogin} // Quando o usuário clicar, o botão terá outro estilo
           >
             <Text style={styles.buttonText}>
               ENTRAR
