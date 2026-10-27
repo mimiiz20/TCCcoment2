@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, FlatList, Modal, Alert, ScrollView} from 'react-native';
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import {Inter_400Regular, Inter_700Bold} from '@expo-google-fonts/inter';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -131,7 +132,7 @@ export default function Editar() {
         }
 
         const resposta = await fetch(
-          'http://10.154.20.25:5000/entrada_app',
+          'http://10.154.20.212:5000/entrada_app',
           {
             method: 'POST',
             body: formulario,

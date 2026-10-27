@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native';
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import { Montserrat_400Regular } from '@expo-google-fonts/montserrat';
+import { Montserrat_400Regular, Montserrat_700Bold} from '@expo-google-fonts/montserrat';
+import {Inter_400Regular, Inter_700Bold} from '@expo-google-fonts/inter';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useEffect } from 'react';
 import { router, usePathname } from 'expo-router';
@@ -33,7 +34,7 @@ export default function Usuarios() {
       try {
 
         const resposta = await fetch(
-          'http://10.154.20.25:5000/contas_app'
+          'http://10.154.20.212:5000/contas_app'
         );
 
         console.log('STATUS:', resposta.status);
@@ -74,7 +75,7 @@ export default function Usuarios() {
           onPress: async () => {
             try {
               const resposta = await fetch(
-                `http://10.154.20.25:5000/excluirUsuario/${id}`,
+                `http://10.154.20.212:5000/excluirUsuario/${id}`,
                 { method: 'DELETE' }
               );
 

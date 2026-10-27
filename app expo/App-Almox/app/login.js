@@ -7,19 +7,15 @@ import { useState } from 'react'; // Serve pra criar uma informação que pode m
 import { router } from 'expo-router'; // Serve para fazer a navegação das telas
 import AsyncStorage from '@react-native-async-storage/async-storage'; //Guarda as informações de login localmente
 
-export default function Login() { // A nossa tela é uma função que será construída como um componente
 
-  const [fontsLoaded] = useFonts({ // Retorna uma informação se as fontes que foram importadas já foram carregadas
+export default function Login() {
+  const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_700Bold,
     Montserrat_400Regular,
     Montserrat_700Bold,
     Poppins_700Bold,
   });
-
-  if (!fontsLoaded) { // Aqui serve se as fontes não forem carregadas não é pra mostrar a tela ainda
-    return null;
-  }
 
   // Aqui é guardado o valor de email e senha, e antes do usuário digitar o valor inicial é vazio
   const [email, setEmail] = useState('');
@@ -29,10 +25,15 @@ export default function Login() { // A nossa tela é uma função que será cons
   const [emailFocus, setEmailFocus] = useState(false);
   const [senhaFocus, setSenhaFocus] = useState(false);
 
+  // Só retorna depois de executar todos os Hooks
+  if (!fontsLoaded) {
+    return null;
+  }
+
   // Criamos uma função de fazerLogin, pra depois poder ser utilizada no botão de entrar na página
   const fazerLogin = async () => { // A função trabalha com operações assíncronas (que trabalham juntas ao Flask e esperam um e outro se conversarem)
   try { // Significa que ele ira tentar fazer a conexão com o Flask (se der certo, o código continua e se der erro ele vai lá pro catch)
-    const resposta = await fetch('http://10.154.20.25:5000/login_app', { // Fetch faz uma requisição ao servidor Flask, recebendo a rota de login específica para o app
+    const resposta = await fetch('http://10.154.20.212:5000/login_app', { // Fetch faz uma requisição ao servidor Flask, recebendo a rota de login específica para o app
       method: 'POST', // As informações de email e senha estão sendo enviados pelo método POST
       headers: {
         'Content-Type': 'application/json', // Isso informa ao servidor que os dados enviados  tem que ser em formato JSON

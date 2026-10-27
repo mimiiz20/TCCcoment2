@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'reac
 import { Card } from 'react-native-paper';
 import { useFonts } from '@expo-google-fonts/inter';
 import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import {Inter_400Regular, Inter_700Bold} from '@expo-google-fonts/inter';
 import { Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
@@ -49,7 +50,7 @@ export default function Cadastro() {
     return;
     }
 
-    const resposta = await fetch('http://10.154.20.25:5000/cadastro_app', {
+    const resposta = await fetch('http://10.154.20.212:5000/cadastro_app', {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json',

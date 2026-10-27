@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Modal, Alert} from 'react-native';
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import {Inter_400Regular, Inter_700Bold} from '@expo-google-fonts/inter';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -41,7 +42,7 @@ export default function Tabela() {
   useCallback(() => {
     const buscarProdutos = async () => {
       try {
-        const resposta = await fetch('http://10.154.20.25:5000/tabela_app');
+        const resposta = await fetch('http://10.154.20.212:5000/tabela_app');
         const dados = await resposta.json();
 
         if (dados.success) {
@@ -81,7 +82,7 @@ const excluirItem = (id) => {
         onPress: async () => {
           try {
             const resposta = await fetch(
-              `http://10.154.20.25:5000/excluir/${id}`,
+              `http://10.154.20.212:5000/excluir/${id}`,
               { method: 'DELETE' }
             );
 
@@ -134,7 +135,7 @@ const excluirItem = (id) => {
       {imagemAberta && (
         <Image
           source={{
-            uri: `http://10.154.20.25:5000${imagemAberta}`
+            uri: `http://10.154.20.212:5000${imagemAberta}`
           }}
           style={styles.imagemPopup}
           resizeMode="contain"
