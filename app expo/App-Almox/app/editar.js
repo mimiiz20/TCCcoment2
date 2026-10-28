@@ -82,9 +82,10 @@ export default function Editar() {
   }
 };
 
-  // Confirmar a operação
+  // Confirmar a operação, ela é a responsável por fazer a entrada ou saída de produtos
   const confirmarOperacao = async () => {
 
+    // Se o nome, ou a quantidade ou o responsável não for informado, ele vai mandar uma mensagem de alert para ele
     if (!nome || !quantidade || !responsavel) {
       Alert.alert(
         'Atenção',
@@ -92,10 +93,11 @@ export default function Editar() {
       );
       return;
     }
-
+    
+    // Transforma o valor da quantidade "string" em um número inteiro (parseInt)
     const quantidadeNumero = parseInt(quantidade);
 
-    if (isNaN(quantidadeNumero) || quantidadeNumero <= 0) {
+    if (isNaN(quantidadeNumero) || quantidadeNumero <= 0) { // Verifica se o resultado não é um número válido, e se a quantidade é maior ou menor que zero
       Alert.alert(
         'Atenção',
         'Digite uma quantidade válida'
@@ -103,7 +105,8 @@ export default function Editar() {
       return;
     }
 
-     const precoNumero = preco ? parseFloat(preco.replace(',', '.')) : 0;
+    // Essa linha converte preço em um número decimal
+     const precoNumero = preco ? parseFloat(preco.replace(',', '.')) : 0; // Se vier acompanhado de , ou . ele é verdadeiro, se for falso será 0
 
     if (isNaN(precoNumero) || precoNumero < 0) {
       Alert.alert(
