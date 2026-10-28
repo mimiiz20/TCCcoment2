@@ -1,3 +1,5 @@
+// ImagePicker: Permite solicitar acesso a galeria e selecionar imagens
+// 
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, FlatList, Modal, Alert, ScrollView} from 'react-native';
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
@@ -34,7 +36,7 @@ export default function Editar() {
   const [estoqueMin, setEstoqueMin] = useState('');
   const [imagem, setImagem] = useState(null);
 
-  // Controla o tipo do usuário
+  // Controla o tipo do usuário quando a tela recebe foco
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [tipoUsuario, setTipoUsuario] = useState('');
   
@@ -43,7 +45,8 @@ export default function Editar() {
         const carregarUsuario = async () => {
           const nome = await AsyncStorage.getItem('nomeUsuario');
           const tipo = await AsyncStorage.getItem('tipoUsuario');
-  
+          
+          // Essa linha atualiza os dados com valores recuperados
           setNomeUsuario(nome || '');
           setTipoUsuario(tipo || '');
         };
@@ -52,14 +55,14 @@ export default function Editar() {
       }, [])
     );
 
-  // Controle de envio
+  // Controle de envio de informações
   const [carregando, setCarregando] = useState(false);
 
   // Permissão para acessar galeria de imagem
   const escolherImagem = async () => {
   const permissao = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-  if (!permissao.granted) {
+  if (!permissao.granted) { // Se a permissão não foi acfeita, ele exibe uma mensagem no app
     Alert.alert(
       'Permissão necessária',
       'Permita o acesso às fotos para escolher uma imagem.'
@@ -67,19 +70,19 @@ export default function Editar() {
     return;
   }
 
+  // Abre o seletor de imagens, depois define o que o seletor deve trabalhar (imagens); permite editar ou recortar a imagem e e depois define a qualidade da imagem em 80%
   const resultado = await ImagePicker.launchImageLibraryAsync({
     mediaTypes: ['images'],
     allowsEditing: true,
     quality: 0.8,
   });
 
-  if (!resultado.canceled) {
+  if (!resultado.canceled) { // Se o usuário não cancelou, o que ele adicionar de imagem será armazenado dentro de (imagem) incluindo sua URI (uma identificação usada para indicar um recurso)
     setImagem(resultado.assets[0]);
   }
 };
 
-  // CONFIRMAR OPERAÇÃO
-
+  // Confirmar a operação
   const confirmarOperacao = async () => {
 
     if (!nome || !quantidade || !responsavel) {

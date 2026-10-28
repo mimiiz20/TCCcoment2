@@ -52,8 +52,8 @@ export default function Tabela() {
         const dados = await resposta.json(); // Interpreta os dados enviados em JSON, aguarda a conversão e armazena em "dados"
 
         if (dados.success) { // Se os dados retornarem "sucess" na API 
-          const produtosFormatados = dados.produtos.map((item) => ({
-            id: item.id,
+          const produtosFormatados = dados.produtos.map((item) => ({ // O código percorre todos os produtos recebidos e cria uma nova lista com os campos necessários
+            id: item.id, // O primeiro nome é o que o app usa, o segundo é o que vem da API (Flask)
             responsavel: item.responsavel,
             nome: item.nome,
             categoria: item.categoria,
@@ -64,50 +64,60 @@ export default function Tabela() {
             imagem: item.imagem,
           }));
 
-          setProdutos(produtosFormatados);
+          // setProdutos: Usado para atualizar o estado "produtos"
+          // produtosFormatados: É a lista de produtos que acabou de ser organizada 
+          setProdutos(produtosFormatados); 
         }
+        // Aqui ele retorna uma mensagem de console de erro, caso a condição não de certo
       } catch (erro) {
         console.log('ERRO AO BUSCAR PRODUTOS:', erro);
       }
     };
 
-    buscarProdutos();
-  }, [])
+    buscarProdutos(); // Só aqui a função é executada
+  }, []) // O [] serve para fechar um useEffect com um array de dependências vazio
+         // Esse efeito é útil para buscar os produtos quando a tabela é aberta, sem repetir a busca a cada nova renderização de produto
 );
 
 // EXCLUIR ITEM
-const excluirItem = (id) => {
-  Alert.alert(
+const excluirItem = (id) => { // Quando um usuário pede e a exclusão de um produto, a função recebe o id do produto 
+  Alert.alert( // Abre uma caixa de diálogo na tela do app, pelo Alert do React Native
     'Excluir item',
     'Tem certeza que deseja excluir este item?',
     [
-      { text: 'Cancelar', style: 'cancel' },
+      { text: 'Cancelar', style: 'cancel' }, // O primeiro define o texto e o segundo o cancelamento da ação
       {
-        text: 'Excluir',
+        text: 'Excluir', // A mesma coisa para a função excluir
         style: 'destructive',
-        onPress: async () => {
-          try {
-            const resposta = await fetch(
-              `http://10.154.20.212:5000/excluir/${id}`,
-              { method: 'DELETE' }
+        onPress: async () => { // A exclusão só começa quando o usuário toca em excluir (ação assincrona)
+          try { // Um bloco que tentará executar as operações
+            const resposta = await fetch( // Cria a variável resposta e aguarda a conclusão da solicitação
+              `http://10.154.20.212:5000/excluir/${id}`, // Endereço do endpoint responsável por excluir o produto. ${id} serve para inserir o identificador recebido pela função diretamente na URL
+              { method: 'DELETE' } // Define o método HTTP DELETE
             );
+            // Basicamente essa parte serve para enviar uma solicitação ao servidor Flask, que vai identificar o produto pelo ID e
+            // executar a exclusão no banco de dados conforme a rota na API do Flask. O React Native não excluir diretamente, mas faz uma solicitação ao servidor
 
-            const data = await resposta.json();
-            console.log('RESPOSTA EXCLUIR:', data);
+            const data = await resposta.json(); // Cria variável para armazenar dados da resposta, e interpreta a resposta HTTP em JSON
+            console.log('RESPOSTA EXCLUIR:', data);  // É a mensagem que identifica o conteúdo registrado no console
 
-            if (data.success) {
-              Alert.alert('Sucesso', 'Item excluído com sucesso!');
+            if (data.success) { // Se a exclusão foi bem sucedida 
+              Alert.alert('Sucesso', 'Item excluído com sucesso!'); // Ele vai retornar uma mensagem de console no app
 
               // Remove da tabela sem precisar recarregar
-              setProdutos((produtosAtuais) =>
-                produtosAtuais.filter((item) => item.id !== id)
+              setProdutos((produtosAtuais) => // Atualiza o estado "produtos" do React que armazena a lista de produtos utilizada na interface
+                // O método filter() percorre a lista inteira e cria um novo array contendo somente os elementos que atendem a condição definida
+                // item: Representa cada produto da lista | item.id: É o ID do produto analisado
+                // !==: Significa "diferente de", comparando outros tipos de valores
+                // id: É o identificador do produto excluido
+                produtosAtuais.filter((item) => item.id !== id) // Função que recebe a lista atual dos produtos (ele faz com o estado mais recente, pra atualização ser feita corretamente)
               );
             } else {
-              Alert.alert('Erro', data.erro || 'Erro ao excluir o item.');
+              Alert.alert('Erro', data.erro || 'Erro ao excluir o item.'); // Se o servidor informar que não conseguiu excluir o produto, o app mostra um erro alert
             }
           } catch (erro) {
-            console.log('ERRO AO EXCLUIR:', erro);
-            Alert.alert('Erro', 'Não foi possível conectar ao servidor.');
+            console.log('ERRO AO EXCLUIR:', erro); // Essa e a mensagem que aparece no console do Vs Code
+            Alert.alert('Erro', 'Não foi possível conectar ao servidor.'); // Já esse erro informa que não foi possível se conectar ao servidor
           }
         },
       },
@@ -119,17 +129,17 @@ const excluirItem = (id) => {
     <View style={styles.background}>
 
 <Modal
-  visible={imagemAberta !== null}
-  transparent={true}
-  animationType="fade"
-  onRequestClose={() => setImagemAberta(null)}
+  visible={imagemAberta !== null} // Define se o modal esta visível, e ele apareccfe quando é diferente de null
+  transparent={true} // Permite que o fundo do modal seja transparente (efeito de sobreposição)
+  animationType="fade" // Faz o modal aparecer e desaparecer com uma animação "fade"
+  onRequestClose={() => setImagemAberta(null)} // Define o que acontece quando o usuário fecha o modal
 >
   <View style={styles.fundoPopup}>
     <View style={styles.popup}>
 
       <TouchableOpacity
         style={styles.fecharPopup}
-        onPress={() => setImagemAberta(null)}
+        onPress={() => setImagemAberta(null)} // Define o que acontece quando o modal é aberto
       >
         <MaterialIcons
           name="close"
@@ -138,13 +148,17 @@ const excluirItem = (id) => {
         />
       </TouchableOpacity>
 
-      {imagemAberta && (
-        <Image
-          source={{
-            uri: `http://10.154.20.212:5000${imagemAberta}`
+       
+      {imagemAberta && ( 
+        // {}: Permite inserir uma expressão JavaScript dentro do JSX (JavaScript XML: uma extensão de sintaxe do JavaScript utilizada no React e React Native para escrever interfaces de forma parecida com HTML)
+        // imagemAberta: Contém o caminho da imagem selecionada
+        // &&: Operador lógico "E", que é quando o conteúdo a direita é renderizado quando a expressão a esquerda é verdadeira
+        <Image // Esse é o componente do React Native que é utilizado para carregar imagens
+          source={{ // Source: Informa da onde a imagem será carregada 
+            uri: `http://10.154.20.212:5000${imagemAberta}` // Uri: Especifica o endereço da imagem, combinando o endereço do servidor com o caminho armazenado no estado, solicitando a imgem ao servidor Flask
           }}
           style={styles.imagemPopup}
-          resizeMode="contain"
+          resizeMode="contain" // Define como a imagem irá aparecer ao ser inserida. Nesse caso, "contain" serve pra manter a proporção original da imagem e tenta exibir ela inteira, dentro da área definida
         />
       )}
 
@@ -152,11 +166,11 @@ const excluirItem = (id) => {
   </View>
 </Modal>
 
-      {/* NAVBAR */}
+      {/* NAVBAR: Ele é um comentário JSX que serve pra identificar essa parte do código */} 
       <View style={styles.navbar}>
         <TouchableOpacity
           style={styles.menuButton}
-          onPress={() => setMenuAberto(!menuAberto)}
+          onPress={() => setMenuAberto(!menuAberto)} // Define a ção que será executada quando o botão for pressionado, e depoois atualiza o estado que controla se o menu esta aberto ( o operador ! inverte o valor booleano)
         >
           <MaterialIcons
             name="menu"
@@ -165,8 +179,9 @@ const excluirItem = (id) => {
           />
         </TouchableOpacity>
 
+        {/* Utiliza a função que criamos para fazer um operador de condição. Se for admin, ele vai usar o estilo "link" caso contrario : for um usuário comum ele vai usar "linkUsuario" */}
         <TouchableOpacity onPress={() => router.push('/tabela')}>
-          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}>
+          <Text style={tipoUsuario === 'admin' ? styles.link : styles.linkUsuario}> 
             ESTOQUE
           </Text>
         </TouchableOpacity>
@@ -177,6 +192,7 @@ const excluirItem = (id) => {
           </Text>
         </TouchableOpacity>
 
+        {/* Se o tipo de usuário for um admin, ele vai ter acesso a mais 2 links de acesso*/}
         {tipoUsuario === 'admin' && (
           <>
             <TouchableOpacity
@@ -199,7 +215,8 @@ const excluirItem = (id) => {
       </View>
 
       {/* SIDEBAR */}
-      {menuAberto && (
+      {/* Quando menuAberto for true a sidebar aparece, mas se for false ela não é renderizada*/}
+      {menuAberto && ( 
         <View style={styles.sidebar}>
           <TouchableOpacity
             style={styles.closeButton}
@@ -212,7 +229,8 @@ const excluirItem = (id) => {
             />
           </TouchableOpacity>
 
-          <Text style={styles.sidebarTitulo}>USUÁRIO</Text>
+          {/* Define a aparência do titulo, depois insere o valor da variável nomeUsuário na interface; dai identifica se o tipo é de admin (true) e se for usuario (false)*/}
+          <Text style={styles.sidebarTitulo}>USUÁRIO</Text> 
           <Text style={styles.usuario}>{nomeUsuario}</Text>
           <Text style={styles.tipo}>
             {tipoUsuario === 'admin' ? 'Administrador' : 'Usuário'}
@@ -239,6 +257,7 @@ const excluirItem = (id) => {
       <View style={styles.tabela}>
 
         {/* CABEÇALHO */}
+        {/* Aqui ele identifica os titulos das colunas*/}
         <View style={styles.linha}>
           <View style={styles.id}>
             <Text style={styles.cabecalho}>ID</Text>
@@ -255,12 +274,16 @@ const excluirItem = (id) => {
         </View>
 
         {/* PRODUTOS */}
-        <FlatList
+        {/* Componente do React Native utilizado para exibir lista de dados dos produtos*/}
           data={produtos}
+          {/* Define a chave única pra identificar cada elemento da lista; (item) representa qual é o produto; converte o id em string*/}
+          {/* Define como cada item da lista deve ser apresentado na interfacfe; onde para cada produto da lista o React Native executa essa função e monta uma linha correspondente a posição dos itens*/}
           keyExtractor={(item) => item.id.toString()}
+        <FlatList 
           renderItem={({ item }) => (
             <>
-              <View style={styles.linha}>
+              {/* Define o estilo de todas as linhas da tabela; depois define o espaõ destinado a coluna e mostra cada item*/}
+              <View style={styles.linha}> 
                 <View style={styles.id}>
                   <Text style={styles.texto}>{item.id}</Text>
                 </View>
@@ -274,8 +297,9 @@ const excluirItem = (id) => {
                 </View>
 
                 <View style={styles.acao}>
+                  {/* Determina o que acontece quando o usuário clica no botão; para fechar você clica novamente e o estado passa a ser "null"*/}
                   <TouchableOpacity
-                    style={styles.botao}
+                    style={styles.botao} 
                     onPress={() =>
                       setProdutoAberto(
                         produtoAberto === item.id ? null : item.id
@@ -302,6 +326,7 @@ const excluirItem = (id) => {
               </View>
 
               {/* DETALHES A MAIS */}
+              {/* Se o ID do produto selecionado é igual ao valor armazenado em produtoAberto*/}
               {produtoAberto === item.id && (
                 <View style={styles.detalhes}>
                   <Text style={styles.detalhe}>
@@ -324,9 +349,10 @@ const excluirItem = (id) => {
                     <Text style={styles.negrito}>DESCRIÇÃO:</Text> {item.descricao}
                   </Text>
 
+                  {/* O código anterior do modal da imagem é usado aqui de novo, atualizando o estado da imagemAberta*/}
                   <TouchableOpacity
                     style={styles.botaoImagem}
-                    onPress={() => setImagemAberta(item.imagem)}
+                    onPress={() => setImagemAberta(item.imagem)} 
                   >
                     <MaterialIcons
                       name="image"
